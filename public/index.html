@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authorisation</title>
+    <link rel="stylesheet" href="./stylesheets/style.css">
+</head>
+
+<body>
+    <h2>Registrierung</h2>
+    <form action="registrierungsverarbeitung.php" method="POST">
+        <label for="vorname">Vorname:</label>
+        <input type="text" id="vorname" name="vorname" required><br><br>
+
+        <label for="nachname">Nachname:</label>
+        <input type="text" id="nachname" name="nachname" required><br><br>
+
+        <label for="email">E-Mail:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="passwort">Passwort:</label>
+        <input type="password" id="passwort" name="passwort" required><br><br>
+
+        <input type="submit" value="Registrieren">
+    </form>
+    <script src="./javascripts/app.js"></script>
+</body>
+
+</html>
