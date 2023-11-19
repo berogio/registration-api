@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
+const bcrypt = require('bcrypt');
 
 
 mongoose.connect("mongodb+srv://gberi2012:1OHgbKre249Xc3qf@cluster0.a2bfzeu.mongodb.net/?retryWrites=true&w=majority")
@@ -14,7 +15,7 @@ const UserSchema = mongoose.Schema({
     vorname: String,
     nachname: String,
     email: String,
-    password: String,
+    passwordHash: String,
 
 })
 
@@ -22,10 +23,19 @@ const UserSchema = mongoose.Schema({
 const User = mongoose.model('User', UserSchema);
 
 router.post('/register', async(req, res) => {
+    const saltRounds = 10
+
     try {
-        const newUser = new User(req.body);
+        const { vorname, nachname, email, password } = req.body
+        const passwordHash = await bcrypt.hash(password, saltRounds)
+        const newUser = new User({
+            vorname,
+            nachname,
+            email,
+            passwordHash,
+        });
         await newUser.save();
-        res.json('New User saved');
+        res.status(201).json('New User saved');
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
