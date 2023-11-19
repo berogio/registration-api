@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 
-
 mongoose.connect("mongodb+srv://gberi2012:1OHgbKre249Xc3qf@cluster0.a2bfzeu.mongodb.net/?retryWrites=true&w=majority")
     .then(a => console.log('Connected to MongoDb'))
     .catch((error) => {
@@ -18,7 +17,6 @@ const UserSchema = mongoose.Schema({
     passwordHash: String,
 
 })
-
 
 const User = mongoose.model('User', UserSchema);
 
@@ -39,6 +37,20 @@ router.post('/register', async(req, res) => {
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
+});
+
+
+router.get('/login', async(req, res, next) => {
+    res.sendFile('login.html', { root: 'public' });
+});
+
+router.post('/login', async(req, res, next) => {
+
+    const { loginPassword, loginEmail } = req.body;
+
+    const user = await User.findOne({ email: loginEmail })
+        .then(e => console.log(e))
+
 });
 
 

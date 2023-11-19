@@ -70,8 +70,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 console.log('Serverantwort:', data);
 
-                if (data) {
-                    window.location.href = 'login.html';
+                if (data.message === 'Login successful') {
+                    window.location.href = '/panel';
                 }
             })
             .catch(error => {

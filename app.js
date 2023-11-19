@@ -4,16 +4,14 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 var cors = require('cors')
-
-
-//database connect
-
-
-
-
-const login = require('./routes/login.js');
-const registration = require('./routes/registration.js');
+const users = require('./routes/user.js');
 const index = require('./routes/index.js');
+
+
+
+
+
+
 
 const app = express();
 
@@ -30,8 +28,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', index);
-app.use('/', registration);
-app.use('/', login);
+app.use('/', users);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
