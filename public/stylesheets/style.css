@@ -44,3 +44,59 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #555;
 }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.profile-card {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#profileImage {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+#name {
+    margin: 0;
+}
+
+#email {
+    margin-top: 10px;
+    color: #888;
+}
+
+button {
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+button:active {
+    transform: scale(0.95);
+}
