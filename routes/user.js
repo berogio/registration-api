@@ -61,9 +61,9 @@ router.post('/login', async(req, res, next) => {
         if (passwordMatch) {
             console.log('Password is correct');
             // Do something when the password is correct, e.g., generate a token
-
+            res.status(200).json({ message: 'OK' })
         } else {
-            console.log('Incorrect password');
+            res.status(401).json({ error: 'Incorrect password' });
 
         }
     } catch (error) {
@@ -71,8 +71,6 @@ router.post('/login', async(req, res, next) => {
         res.status(500).json({ error: error.message });
     }
 });
-
-
 
 
 
