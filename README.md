@@ -19,12 +19,11 @@ npm start
 The application will be running at http://localhost:3000 by default.
 
 Technologies Used
-Express.js
-MongoDB (for user data)
-JSON Web Token (JWT) (for authentication)
-Redis (for general caching)
-Application Features
-User registration
-User login with JWT
-Protected routes
+## Express.js
+## MongoDB (for user data)
+## JSON Web Token (JWT) (for authentication)
+## Application Features
+## User registration
+## User login with JWT
+## Protected routes
 
