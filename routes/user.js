@@ -40,7 +40,6 @@ const UserSchema = mongoose.Schema({
         required: true,
         validate: {
             validator: value => passwordSchema.validate(value),
-
         }
     }
 });
@@ -53,17 +52,15 @@ router.post('/register', async(req, res) => {
     try {
         const { vorname, nachname, email, password } = req.body;
 
-        // Validiere die E-Mail-Adresse
         if (!validator.validate(email)) {
             return res.status(400).json({ error: 'Invalid email address' });
         }
 
-        // Validiere das Passwort
         if (!passwordSchema.validate(password)) {
             return res.status(400).json({ error: 'Password must be at least 5 characters long and contain at least one uppercase letter.' });
         }
 
-        // Überprüfe, ob die E-Mail bereits in der Datenbank existiert
+
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ error: 'Email already exists' });
@@ -77,13 +74,11 @@ router.post('/register', async(req, res) => {
             passwordHash,
         });
 
-        // Speichere den neuen Benutzer in der Datenbank
         await newUser.save();
 
-        // Gib mehr Informationen zurück, z.B. die Benutzer-ID
         res.status(201).json({ message: 'New User saved', userId: newUser._id });
     } catch (error) {
-        // Sende eine detaillierte Fehlermeldung zurück
+
         res.status(500).json({ error: error.message });
     }
 });
@@ -103,12 +98,11 @@ router.post('/login', async(req, res, next) => {
             return res.status(404).json({ error: 'User not found' });
         }
 
-        // Now that you have the user, you can compare the password
         const passwordMatch = await bcrypt.compare(loginPassword, user.passwordHash);
 
         if (passwordMatch) {
             // Do something when the password is correct, e.g., generate a token
-            res.status(200).json({ message: 'OK' })
+            res.status(200).json({ message: 'OK', redirectTo: 'panel.html' });
         } else {
             res.status(401).json({ error: 'Incorrect password' });
 

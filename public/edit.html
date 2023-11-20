@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Change</title>
+    <link rel="stylesheet" href="./stylesheets/style.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <h2>Edit Password</h2>
+    <form id="passwordChangeForm" onsubmit="changePassword(); return false;">
+        <label for="currentPassword">Current Password:</label>
+        <input type="password" id="currentPassword" name="currentPassword" required>
+
+        <label for="newPassword">New Password:</label>
+        <input type="password" id="newPassword" name="newPassword" required>
+
+        <label for="confirmPassword">Confirm New Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+        <input type="submit" value="Change Password">
+    </form>
+
+
+</body>
+
+</html>

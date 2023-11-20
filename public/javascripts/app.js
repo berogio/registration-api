@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(response => {
                 if (response.status === 201) {
                     // Status 201 bedeutet "Created", also erfolgreich registriert
-                    window.location.href = 'login.html';
+                    window.location.href = data.redirectTo;
                 } else if (response.status === 400) {
                     // Status 400 bedeutet "Bad Request", also Fehler bei den Benutzereingaben
                     response.json().then(data => {
