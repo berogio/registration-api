@@ -51,7 +51,6 @@ router.post('/login', async(req, res, next) => {
         const user = await User.findOne({ email: loginEmail });
 
         if (!user) {
-            console.log('User not found');
             return res.status(404).json({ error: 'User not found' });
         }
 
@@ -59,7 +58,6 @@ router.post('/login', async(req, res, next) => {
         const passwordMatch = await bcrypt.compare(loginPassword, user.passwordHash);
 
         if (passwordMatch) {
-            console.log('Password is correct');
             // Do something when the password is correct, e.g., generate a token
             res.status(200).json({ message: 'OK' })
         } else {
@@ -67,7 +65,6 @@ router.post('/login', async(req, res, next) => {
 
         }
     } catch (error) {
-        console.error('Error during login:', error);
         res.status(500).json({ error: error.message });
     }
 });
