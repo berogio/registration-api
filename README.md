@@ -5,18 +5,7 @@ This is a simple Express application project implementing user registration and 
 
 ## Installation
 1. Install the required dependencies:
-    "bcrypt": "^5.1.1",
-    "cookie-parser": "~1.4.4",
-    "cors": "^2.8.5",
-    "debug": "~2.6.9",
-    "email-validator": "^2.0.4",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
-    "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.0.0",
-    "morgan": "~1.9.1",
-    "password-validator": "^5.3.0"
+
    ```bash
    npm install
 Start the application:
@@ -38,5 +27,5 @@ Technologies Used
  User login with JWT,
  Protected routes,
  
-#Author
+# Author
 [Giorgi Beridze]
