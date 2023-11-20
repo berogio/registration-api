@@ -11,6 +11,13 @@ This is a simple Express application project implementing user registration and 
 Start the application:
 npm start
 
+
+2. Start the application:
+
+   ```bash
+   npm start
+The application will be running at http://localhost:3000 by default.
+
 Technologies Used
 Express.js
 MongoDB (for user data)
