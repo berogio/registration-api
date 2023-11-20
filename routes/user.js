@@ -2,7 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-
+const validator = require('email-validator');
+const passwordValidator = require('password-validator');
 mongoose.connect("mongodb+srv://gberi2012:1OHgbKre249Xc3qf@cluster0.a2bfzeu.mongodb.net/?retryWrites=true&w=majority")
     .then(a => console.log('Connected to MongoDb'))
     .catch((error) => {
@@ -10,31 +11,79 @@ mongoose.connect("mongodb+srv://gberi2012:1OHgbKre249Xc3qf@cluster0.a2bfzeu.mong
     });
 
 
-const UserSchema = mongoose.Schema({
-    vorname: String,
-    nachname: String,
-    email: String,
-    passwordHash: String,
+const passwordSchema = new passwordValidator();
+passwordSchema
+    .is().min(5) // Mindestlänge 5 Zeichen
+    .has().uppercase(); // Mindestens ein Großbuchstabe
 
-})
+
+
+const UserSchema = mongoose.Schema({
+    vorname: {
+        type: String,
+        required: true
+    },
+    nachname: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true,
+        validate: {
+            validator: validator.validate,
+            message: props => `${props.value} is not a valid email address!`
+        }
+    },
+    passwordHash: {
+        type: String,
+        required: true,
+        validate: {
+            validator: value => passwordSchema.validate(value),
+
+        }
+    }
+});
 
 const User = mongoose.model('User', UserSchema);
-const plainPassword = 'mySecurePassword';
+
 router.post('/register', async(req, res) => {
-    const saltRounds = 10
+    const saltRounds = 10;
 
     try {
-        const { vorname, nachname, email, password } = req.body
-        const passwordHash = await bcrypt.hash(password, saltRounds)
+        const { vorname, nachname, email, password } = req.body;
+
+        // Validiere die E-Mail-Adresse
+        if (!validator.validate(email)) {
+            return res.status(400).json({ error: 'Invalid email address' });
+        }
+
+        // Validiere das Passwort
+        if (!passwordSchema.validate(password)) {
+            return res.status(400).json({ error: 'Password must be at least 5 characters long and contain at least one uppercase letter.' });
+        }
+
+        // Überprüfe, ob die E-Mail bereits in der Datenbank existiert
+        const existingUser = await User.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ error: 'Email already exists' });
+        }
+
+        const passwordHash = await bcrypt.hash(password, saltRounds);
         const newUser = new User({
             vorname,
             nachname,
             email,
             passwordHash,
         });
+
+        // Speichere den neuen Benutzer in der Datenbank
         await newUser.save();
-        res.status(201).json('New User saved');
+
+        // Gib mehr Informationen zurück, z.B. die Benutzer-ID
+        res.status(201).json({ message: 'New User saved', userId: newUser._id });
     } catch (error) {
+        // Sende eine detaillierte Fehlermeldung zurück
         res.status(500).json({ error: error.message });
     }
 });
