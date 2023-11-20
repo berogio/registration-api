@@ -49,11 +49,11 @@ document.addEventListener("DOMContentLoaded", function() {
         event.preventDefault();
 
         const loginEmail = document.getElementById('LoginEmail').value
-        const loignPassword = document.getElementById('LoginPasswort').value
+        const loginPassword = document.getElementById('LoginPasswort').value
 
         const LoginFormData = {
             loginEmail: loginEmail,
-            loignPassword: loignPassword
+            loginPassword: loginPassword
         }
 
         const zielUrl = 'http://localhost:3000/login';
@@ -70,9 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 console.log('Serverantwort:', data);
 
-                if (data.message === 'Login successful') {
-                    window.location.href = '/panel';
-                }
+
             })
             .catch(error => {
                 console.error('Fehler beim Senden der Daten:', error);

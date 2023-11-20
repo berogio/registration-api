@@ -19,7 +19,7 @@ const UserSchema = mongoose.Schema({
 })
 
 const User = mongoose.model('User', UserSchema);
-
+const plainPassword = 'mySecurePassword';
 router.post('/register', async(req, res) => {
     const saltRounds = 10
 
@@ -43,12 +43,36 @@ router.post('/register', async(req, res) => {
 router.get('/login', async(req, res, next) => {
     res.sendFile('login.html', { root: 'public' });
 });
-
 router.post('/login', async(req, res, next) => {
-    const { loginPassword, loginEmail } = req.body;
-    const user = await User.findOne({ email: loginEmail })
+    try {
+        const loginPassword = req.body.loginPassword;
+        const loginEmail = req.body.loginEmail;
 
+        const user = await User.findOne({ email: loginEmail });
+
+        if (!user) {
+            console.log('User not found');
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        // Now that you have the user, you can compare the password
+        const passwordMatch = await bcrypt.compare(loginPassword, user.passwordHash);
+
+        if (passwordMatch) {
+            console.log('Password is correct');
+            // Do something when the password is correct, e.g., generate a token
+
+        } else {
+            console.log('Incorrect password');
+
+        }
+    } catch (error) {
+        console.error('Error during login:', error);
+        res.status(500).json({ error: error.message });
+    }
 });
+
+
 
 
 
