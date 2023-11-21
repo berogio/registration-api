@@ -4,6 +4,8 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const validator = require('email-validator');
 const passwordValidator = require('password-validator');
+
+
 mongoose.connect("mongodb+srv://gberi2012:1OHgbKre249Xc3qf@cluster0.a2bfzeu.mongodb.net/?retryWrites=true&w=majority")
     .then(a => console.log('Connected to MongoDb'))
     .catch((error) => {
@@ -87,6 +89,8 @@ router.post('/register', async(req, res) => {
 router.get('/login', async(req, res, next) => {
     res.sendFile('login.html', { root: 'public' });
 });
+
+
 router.post('/login', async(req, res, next) => {
     try {
         const loginPassword = req.body.loginPassword;
@@ -101,6 +105,7 @@ router.post('/login', async(req, res, next) => {
         const passwordMatch = await bcrypt.compare(loginPassword, user.passwordHash);
 
         if (passwordMatch) {
+
             // Do something when the password is correct, e.g., generate a token
             res.status(200).json({ message: 'OK', redirectTo: 'panel.html' });
         } else {
