@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
+    const loginButton = document.querySelector('loginButton');
     const registrationForm = document.querySelector("form");
-
     registrationForm.addEventListener("submit", function(event) {
         event.preventDefault();
 
@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const nachname = document.getElementById("nachname").value;
         const email = document.getElementById("email").value;
         const password = document.getElementById("passwort").value;
+
 
 
 
@@ -67,3 +68,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     });
 });
+
+loginButton.addEventListener('click', function() {
+    window.location.href = 'login.html';
+})
