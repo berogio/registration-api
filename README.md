@@ -15,7 +15,9 @@ npm start
 2. Start the application:
 
    ```bash
-   npm start
+   npm start or
+   nodemon
+
 The application will be running at http://localhost:3000 by default.
 
 Technologies Used
