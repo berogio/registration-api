@@ -18,6 +18,13 @@ app.set('view engine', 'jade');
 
 
 
+let requstTime = function(req, res, next) {
+    req.requesTime = Date.now()
+    next()
+}
+
+
+app.use(requstTime)
 app.use(cors())
 app.use(logger('dev'));
 app.use(express.json());
