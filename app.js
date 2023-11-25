@@ -10,15 +10,15 @@ const index = require('./routes/index.js');
 
 
 
-
-
-
 const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
-
+app.use(function(req, res, next) {
+    console.log('gio')
+    next()
+})
 
 app.use(cors())
 app.use(logger('dev'));

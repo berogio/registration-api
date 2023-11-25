@@ -108,6 +108,7 @@ router.post('/login', async(req, res, next) => {
 
             // Do something when the password is correct, e.g., generate a token
             res.status(200).json({ message: 'OK', redirectTo: 'panel.html' });
+
         } else {
             res.status(401).json({ error: 'Incorrect password' });
 
