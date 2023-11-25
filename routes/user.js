@@ -86,6 +86,25 @@ router.post('/register', async(req, res) => {
 });
 
 
+
+let midel = function(key) {
+    return function(req, res, next) {
+        if (req.params.key == key) {
+            next()
+        } else {
+            res.send('no')
+        }
+    }
+}
+
+
+router.get('/test/:key', midel('12'), async(req, res, next) => {
+    console.log(req.params)
+    res.send('ok')
+});
+
+
+
 router.get('/login', async(req, res, next) => {
     res.sendFile('login.html', { root: 'public' });
 });
