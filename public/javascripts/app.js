@@ -9,16 +9,12 @@ document.addEventListener("DOMContentLoaded", function() {
         const email = document.getElementById("email").value;
         const password = document.getElementById("passwort").value;
 
-
-
-
         const formData = {
             vorname: vorname,
             nachname: nachname,
             email: email,
             password: password
         };
-
 
         const zielUrl = 'http://localhost:3000/register';
         fetch(zielUrl, {
@@ -56,8 +52,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 // Handle other errors
                 console.error('Fehler beim Senden der Daten:', error);
             });
-
-
 
         function showError(errorMessage) {
             // Zeige die Fehlermeldung im Front-End an

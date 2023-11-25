@@ -5,7 +5,6 @@ const bcrypt = require('bcrypt');
 const validator = require('email-validator');
 const passwordValidator = require('password-validator');
 
-
 mongoose.connect("mongodb+srv://gberi2012:1OHgbKre249Xc3qf@cluster0.a2bfzeu.mongodb.net/?retryWrites=true&w=majority")
     .then(a => console.log('Connected to MongoDb'))
     .catch((error) => {
@@ -17,8 +16,6 @@ const passwordSchema = new passwordValidator();
 passwordSchema
     .is().min(5) // Mindestlänge 5 Zeichen
     .has().uppercase(); // Mindestens ein Großbuchstabe
-
-
 
 const UserSchema = mongoose.Schema({
     vorname: {
@@ -62,7 +59,6 @@ router.post('/register', async(req, res) => {
             return res.status(400).json({ error: 'Password must be at least 5 characters long and contain at least one uppercase letter.' });
         }
 
-
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ error: 'Email already exists' });
@@ -85,8 +81,6 @@ router.post('/register', async(req, res) => {
     }
 });
 
-
-
 // let midel = function(key) {
 //     return function(req, res, next) {
 //         if (req.params.key == key) {
@@ -102,8 +96,6 @@ router.post('/register', async(req, res) => {
 //     console.log(req.params)
 //     res.send('ok')
 // });
-
-
 
 router.get('/login', async(req, res, next) => {
     res.sendFile('login.html', { root: 'public' });
@@ -136,7 +128,6 @@ router.post('/login', async(req, res, next) => {
         res.status(500).json({ error: error.message });
     }
 });
-
 
 
 module.exports = router;
