@@ -112,7 +112,6 @@ router.post('/login', async(req, res, next) => {
     }
 });
 
-
 router.get('/login', async(req, res, next) => {
     if (req.session.user) {
         console.log('gio')
@@ -123,8 +122,6 @@ router.get('/login', async(req, res, next) => {
 
 
 });
-
-
 
 let guard = function() {
     return function middler(req, res, next) {
@@ -139,5 +136,19 @@ let guard = function() {
 router.get('/panel', guard(), async(req, res, next) => {
     res.sendFile('panel.html', { root: 'public' });
 });
+
+router.post('/signout', async(req, res, next) => {
+    req.session.destroy(err => {
+        if (err) {
+            console.error('Error destroying session:', err);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
+        res.redirect('/login');
+    });
+});
+router.get('/edit', guard(), async(req, res, next) => {
+    res.sendFile('edit.html', { root: 'public' });
+});
+
 
 module.exports = router;
