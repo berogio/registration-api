@@ -6,6 +6,8 @@ const logger = require('morgan');
 var cors = require('cors')
 const users = require('./routes/user.js');
 const index = require('./routes/index.js');
+var session = require('express-session')
+
 
 const app = express();
 
@@ -17,6 +19,29 @@ let requstTime = function(req, res, next) {
     req.requesTime = Date.now()
     next()
 }
+
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+
+}))
+
+const blockHTMLRequests = (req, res, next) => {
+    const requestPath = req.path;
+    if (requestPath.endsWith('.html')) {
+        // Block the request
+        res.status(403).send('Access to HTML files is not allowed');
+    } else {
+        // Continue with the next middleware
+        next();
+    }
+};
+
+// Verwende das Middleware für alle Routen
+app.use(blockHTMLRequests);
+
+
 
 app.use(requstTime)
 app.use(cors())

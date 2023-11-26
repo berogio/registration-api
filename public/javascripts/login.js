@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(data => {
                 if (data.message === 'OK') {
                     // Redirect to the panel page
-                    window.location.href = 'panel.html';
+                    window.location.href = 'panel';
                 } else {
                     errorMessageElement.textContent = 'Incorrect email or password';
                 }

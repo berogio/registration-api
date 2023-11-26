@@ -45,6 +45,7 @@ const UserSchema = mongoose.Schema({
 
 const User = mongoose.model('User', UserSchema);
 
+
 router.post('/register', async(req, res) => {
     const saltRounds = 10;
 
@@ -74,36 +75,16 @@ router.post('/register', async(req, res) => {
 
         await newUser.save();
 
-        res.status(201).json({ message: 'New User saved', redirectTo: 'login.html' });
+        res.status(201).json({ message: 'New User saved', redirectTo: 'login' });
     } catch (error) {
 
         res.status(500).json({ error: error.message });
     }
 });
 
-// let midel = function(key) {
-//     return function(req, res, next) {
-//         if (req.params.key == key) {
-//             next()
-//         } else {
-//             res.send('no')
-//         }
-//     }
-// }
-
-
-// router.get('/test/:key', midel('12'), async(req, res, next) => {
-//     console.log(req.params)
-//     res.send('ok')
-// });
-
-router.get('/login', async(req, res, next) => {
-    res.sendFile('login.html', { root: 'public' });
-});
-
-
 router.post('/login', async(req, res, next) => {
     try {
+
         const loginPassword = req.body.loginPassword;
         const loginEmail = req.body.loginEmail;
 
@@ -117,7 +98,9 @@ router.post('/login', async(req, res, next) => {
 
         if (passwordMatch) {
             console.log(req.requesTime)
-                // Do something when the password is correct, e.g., generate a token
+            req.session.user = 'gio'
+
+            // Do something when the password is correct, e.g., generate a token
             res.status(200).json({ message: 'OK', redirectTo: 'panel.html' });
 
         } else {
@@ -129,5 +112,32 @@ router.post('/login', async(req, res, next) => {
     }
 });
 
+
+router.get('/login', async(req, res, next) => {
+    if (req.session.user) {
+        console.log('gio')
+        res.sendFile('panel.html', { root: 'public' });
+    } else {
+        res.sendFile('login.html', { root: 'public' });
+    }
+
+
+});
+
+
+
+let guard = function() {
+    return function middler(req, res, next) {
+        if (req.session.user) {
+            next();
+        } else {
+            res.status(401).json('not authorised');
+        }
+    };
+};
+
+router.get('/panel', guard(), async(req, res, next) => {
+    res.sendFile('panel.html', { root: 'public' });
+});
 
 module.exports = router;
