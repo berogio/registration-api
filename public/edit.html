@@ -13,7 +13,7 @@
 
 <body>
     <h2>Edit Password</h2>
-    <form id="passwordChangeForm" onsubmit="changePassword(); return false;">
+    <form id="passwordChangeForm" onsubmit="changePassword();">
         <label for="currentPassword">Current Password:</label>
         <input type="password" id="currentPassword" name="currentPassword" required>
 
@@ -25,9 +25,7 @@
 
         <input type="submit" value="Change Password">
     </form>
-
-
-
+    <script src="./javascripts/edit.js"></script>
 </body>
 
 </html>
