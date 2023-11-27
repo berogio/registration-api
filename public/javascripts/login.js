@@ -36,3 +36,5 @@ document.addEventListener("DOMContentLoaded", function() {
             });
     });
 });
+
+const forgotPasswordButton = document.getElementById("forgotPasswordButton");
