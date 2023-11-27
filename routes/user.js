@@ -98,9 +98,8 @@ router.post('/login', async(req, res, next) => {
 
         if (passwordMatch) {
             console.log(req.requesTime)
-            req.session.user = 'gio'
-
-            // Do something when the password is correct, e.g., generate a token
+            req.session.user = user._id
+                // Do something when the password is correct, e.g., generate a token
             res.status(200).json({ message: 'OK', redirectTo: 'panel.html' });
 
         } else {
@@ -114,7 +113,6 @@ router.post('/login', async(req, res, next) => {
 
 router.get('/login', async(req, res, next) => {
     if (req.session.user) {
-        console.log('gio')
         res.sendFile('panel.html', { root: 'public' });
     } else {
         res.sendFile('login.html', { root: 'public' });
