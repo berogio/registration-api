@@ -148,40 +148,28 @@ router.get('/edit', guard(), async(req, res, next) => {
     res.sendFile('edit.html', { root: 'public' });
 });
 
-
 router.post('/edit', guard(), async(req, res, next) => {
     try {
-        const userId = req.session.user; // Die Benutzer-ID aus der Sitzung abrufen
-
-        // Überprüfen, ob die Benutzer-ID gültig ist
+        const userId = req.session.user;
         if (!userId) {
             return res.status(401).json({ error: 'User not authenticated' });
         }
-
         const user = await User.findById(userId);
-
         if (!user) {
             return res.status(404).json({ error: 'User not found' });
         }
-
         const { currentPassword, newPassword } = req.body;
-
-        // Überprüfen, ob das neue Passwort den Anforderungen entspricht
         if (!passwordSchema.validate(newPassword)) {
             return res.status(400).json({ error: 'Password must be at least 5 characters long and contain at least one uppercase letter.' });
         }
-
-        // Überprüfen, ob das aktuelle Passwort korrekt ist
         const passwordMatch = await bcrypt.compare(currentPassword, user.passwordHash);
         if (!passwordMatch) {
             return res.status(401).json({ error: 'Incorrect current password' });
         }
 
-        // Das Passwort ändern und in der Datenbank speichern
         const newHashedPassword = await bcrypt.hash(newPassword, 10);
         user.passwordHash = newHashedPassword;
         await user.save();
-
         res.status(200).json({ message: 'Password changed successfully' });
     } catch (error) {
         console.error('Error changing password:', error);
