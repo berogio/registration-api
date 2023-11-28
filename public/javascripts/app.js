@@ -26,35 +26,28 @@ document.addEventListener("DOMContentLoaded", function() {
             })
             .then(response => {
                 if (response.status === 201) {
-                    // Status 201 bedeutet "Created", also erfolgreich registriert
-                    return response.json(); // Rückgabe des JSON-Objekts aus der Serverantwort
+                    return response.json();
                 } else if (response.status === 400) {
-                    // Status 400 bedeutet "Bad Request", also Fehler bei den Benutzereingaben
                     return response.json().then(data => {
-                        // Zeige die Fehlermeldung im Front-End an
                         showError(data.error);
-                        throw new Error(data.error); // Wirf einen Fehler, um den nachfolgenden .then-Block zu überspringen
+                        throw new Error(data.error);
                     });
                 } else {
-                    // Zeige eine allgemeine Fehlermeldung für andere Statuscodes
                     console.error('Fehler beim Registrieren:', response.statusText);
                     throw new Error('Fehler beim Registrieren');
                 }
             })
             .then(data => {
-                // Handle data if needed
                 const redirectTo = data.redirectTo;
                 if (redirectTo) {
                     window.location.href = redirectTo;
                 }
             })
             .catch(error => {
-                // Handle other errors
                 console.error('Fehler beim Senden der Daten:', error);
             });
 
         function showError(errorMessage) {
-            // Zeige die Fehlermeldung im Front-End an
             const errorElement = document.getElementById('error-message');
             errorElement.innerText = errorMessage;
             errorElement.style.color = 'red';

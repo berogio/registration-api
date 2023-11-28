@@ -45,7 +45,6 @@ const UserSchema = mongoose.Schema({
 
 const User = mongoose.model('User', UserSchema);
 
-
 router.post('/register', async(req, res) => {
     const saltRounds = 10;
 
@@ -84,27 +83,20 @@ router.post('/register', async(req, res) => {
 
 router.post('/login', async(req, res, next) => {
     try {
-
         const loginPassword = req.body.loginPassword;
         const loginEmail = req.body.loginEmail;
-
         const user = await User.findOne({ email: loginEmail });
-
         if (!user) {
             return res.status(404).json({ error: 'User not found' });
         }
-
         const passwordMatch = await bcrypt.compare(loginPassword, user.passwordHash);
 
         if (passwordMatch) {
             console.log(req.requesTime)
             req.session.user = user._id
-                // Do something when the password is correct, e.g., generate a token
             res.status(200).json({ message: 'OK', redirectTo: 'panel.html' });
-
         } else {
             res.status(401).json({ error: 'Incorrect password' });
-
         }
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -117,8 +109,6 @@ router.get('/login', async(req, res, next) => {
     } else {
         res.sendFile('login.html', { root: 'public' });
     }
-
-
 });
 
 let guard = function() {
