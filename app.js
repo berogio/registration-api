@@ -6,6 +6,7 @@ const logger = require('morgan');
 var cors = require('cors')
 const users = require('./routes/user.js');
 const index = require('./routes/index.js');
+const contact = require('./routes/contact.js');
 var session = require('express-session')
 
 
@@ -53,6 +54,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/', users);
+app.use('/', contact);
+
+
 
 app.use(function(req, res, next) {
     next(createError(404));

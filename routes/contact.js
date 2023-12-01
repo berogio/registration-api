@@ -1,28 +1,48 @@
-const nodemailer = require("nodemailer");
+const express = require('express');
+const router = express.Router();
+const nodemailer = require('nodemailer');
+router.get('/contact', function(req, res, next) {
 
-const transporter = nodemailer.createTransport({
-    host: "smtp.forwardemail.net",
-    port: 465,
-    secure: true,
-    auth: {
-
-        user: "REPLACE-WITH-YOUR-ALIAS@YOURDOMAIN.COM",
-        pass: "REPLACE-WITH-YOUR-GENERATED-PASSWORD",
-    },
+    res.sendFile('kontakt.html', { root: 'public' });
 });
 
-async function main() {
+router.post('/contact', function(req, res, next) {
+    // Die Formulardaten befinden sich in req.body
+    const name = req.body.name;
+    const email = req.body.email;
+    const message = req.body.message;
 
-    const info = await transporter.sendMail({
-        from: '"Fred Foo 👻" <foo@example.com>', // sender address
-        to: "bar@example.com, baz@example.com", // list of receivers
-        subject: "Hello ✔", // Subject line
-        text: "Hello world?", // plain text body
-        html: "<b>Hello world?</b>", // html body
+    console.log('Name:', name);
+    console.log('E-Mail:', email);
+    console.log('Nachricht:', message);
+
+    // Konfiguriere den Nodemailer-Transporter
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'gberi2012@agruni.edu.ge',
+            pass: ''
+        }
     });
 
-    console.log("Message sent: %s", info.messageId);
+    // Konfiguriere die E-Mail-Optionen
+    const mailOptions = {
+        from: 'gberi2012@agruni.edu.ge',
+        to: 'gberi2012@agruni.edu.ge',
+        subject: 'Neue Kontaktanfrage',
+        text: `Name: ${name}\nE-Mail: ${email}\nNachricht: ${message}`
+    };
 
-}
+    // Sende die E-Mail
+    transporter.sendMail(mailOptions, function(error, info) {
+        if (error) {
+            console.log(error);
+            res.status(500).send('Fehler beim Senden der E-Mail');
+        } else {
+            console.log('E-Mail gesendet: ' + info.response);
+            res.status(200).send('E-Mail erfolgreich gesendet');
+        }
+    });
+});
 
-main().catch(console.error);
+module.exports = router;
