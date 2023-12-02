@@ -1,7 +1,7 @@
 # Express Application Project
 
 ## Description
-This is a simple Express application project implementing user registration and authentication using MongoDB, JWT
+This is a simple Express application project implementing user registration and authentication using MongoDB, JWT, Nodemailer
 
 ## Installation
 1. Install the required dependencies:
