@@ -7,7 +7,6 @@ router.get('/contact', function(req, res, next) {
 });
 
 router.post('/contact', function(req, res, next) {
-    // Die Formulardaten befinden sich in req.body
     const name = req.body.name;
     const email = req.body.email;
     const message = req.body.message;
@@ -16,7 +15,6 @@ router.post('/contact', function(req, res, next) {
     console.log('E-Mail:', email);
     console.log('Nachricht:', message);
 
-    // Konfiguriere den Nodemailer-Transporter
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -25,7 +23,6 @@ router.post('/contact', function(req, res, next) {
         }
     });
 
-    // Konfiguriere die E-Mail-Optionen
     const mailOptions = {
         from: 'gberi2012@agruni.edu.ge',
         to: 'gberi2012@agruni.edu.ge',
@@ -33,7 +30,6 @@ router.post('/contact', function(req, res, next) {
         text: `Name: ${name}\nE-Mail: ${email}\nNachricht: ${message}`
     };
 
-    // Sende die E-Mail
     transporter.sendMail(mailOptions, function(error, info) {
         if (error) {
             console.log(error);
