@@ -26,17 +26,17 @@ router.post('/contact', function(req, res, next) {
     const mailOptions = {
         from: 'gberi2012@agruni.edu.ge',
         to: 'gberi2012@agruni.edu.ge',
-        subject: 'Neue Kontaktanfrage',
-        text: `Name: ${name}\nE-Mail: ${email}\nNachricht: ${message}`
+        subject: 'New Contact Request',
+        text: `Name: ${name}\nE-Mail: ${email}\nMessage ${message}`
     };
 
     transporter.sendMail(mailOptions, function(error, info) {
         if (error) {
             console.log(error);
-            res.status(500).send('Fehler beim Senden der E-Mail');
+            res.status(500).send('Error sending the E-Mail');
         } else {
-            console.log('E-Mail gesendet: ' + info.response);
-            res.status(200).send('E-Mail erfolgreich gesendet');
+            console.log('E-Mail sent: ' + info.response);
+            res.status(200).send('E-Mail sent successfully');
         }
     });
 });
