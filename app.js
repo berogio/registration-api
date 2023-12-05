@@ -3,22 +3,14 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-var cors = require('cors')
+const cors = require('cors')
 const users = require('./routes/user.js');
 const index = require('./routes/index.js');
 const contact = require('./routes/contact.js');
+const { blockHTMLRequests, requstTime } = require('./middleware/AllMiddleware.js');
 var session = require('express-session')
 
-
 const app = express();
-
-
-
-
-let requstTime = function(req, res, next) {
-    req.requesTime = Date.now()
-    next()
-}
 
 app.use(session({
     secret: 'keyboard cat',
@@ -27,17 +19,7 @@ app.use(session({
 
 }))
 
-const blockHTMLRequests = (req, res, next) => {
-    const requestPath = req.path;
-    if (requestPath.endsWith('.html')) {
-        res.status(403).send('Access to HTML files is not allowed');
-    } else {
-        next();
-    }
-};
-
 app.use(blockHTMLRequests);
-
 app.use(requstTime)
 app.use(cors())
 app.use(logger('dev'));
@@ -49,8 +31,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/', users);
 app.use('/', contact);
-
-
 
 app.use(function(req, res, next) {
     next(createError(404));

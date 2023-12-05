@@ -4,6 +4,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const validator = require('email-validator');
 const passwordValidator = require('password-validator');
+const { guard } = require('../middleware/AllMiddleware');
 
 mongoose.connect("mongodb+srv://gberi2012:1OHgbKre249Xc3qf@cluster0.a2bfzeu.mongodb.net/?retryWrites=true&w=majority")
     .then(a => console.log('Connected to MongoDb'))
@@ -42,6 +43,7 @@ const UserSchema = mongoose.Schema({
         }
     }
 });
+
 
 const User = mongoose.model('User', UserSchema);
 
@@ -110,15 +112,6 @@ router.get('/login', async(req, res, next) => {
     }
 });
 
-let guard = function() {
-    return function middler(req, res, next) {
-        if (req.session.user) {
-            next();
-        } else {
-            res.status(401).json('not authorised');
-        }
-    };
-};
 
 router.get('/dashboard', guard(), async(req, res, next) => {
     res.sendFile('dashboard.html', { root: 'public' });
@@ -133,6 +126,7 @@ router.post('/signout', async(req, res, next) => {
         res.redirect('/login');
     });
 });
+
 router.get('/edit', guard(), async(req, res, next) => {
     res.sendFile('edit.html', { root: 'public' });
 });
