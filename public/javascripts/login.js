@@ -4,17 +4,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     loginForm.addEventListener("submit", function(event) {
         event.preventDefault();
-
         const loginEmail = document.getElementById('LoginEmail').value;
         const loginPassword = document.getElementById('LoginPasswort').value;
-
         const LoginFormData = {
             loginEmail: loginEmail,
             loginPassword: loginPassword
         };
-
         const zielUrl = 'http://localhost:3000/login';
-
         fetch(zielUrl, {
                 method: 'POST',
                 headers: {

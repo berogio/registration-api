@@ -8,7 +8,7 @@ const users = require('./routes/user.js');
 const index = require('./routes/index.js');
 const contact = require('./routes/contact.js');
 const { blockHTMLRequests, requstTime } = require('./middleware/AllMiddleware.js');
-var session = require('express-session')
+const session = require('express-session')
 
 const app = express();
 

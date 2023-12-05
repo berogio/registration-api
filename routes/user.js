@@ -44,28 +44,22 @@ const UserSchema = mongoose.Schema({
     }
 });
 
-
 const User = mongoose.model('User', UserSchema);
 
 router.post('/register', async(req, res) => {
     const saltRounds = 10;
-
     try {
         const { vorname, nachname, email, password } = req.body;
-
         if (!validator.validate(email)) {
             return res.status(400).json({ error: 'Invalid email address' });
         }
-
         if (!passwordSchema.validate(password)) {
             return res.status(400).json({ error: 'Password must be at least 5 characters long and contain at least one uppercase letter.' });
         }
-
         const existingUser = await User.findOne({ email });
         if (existingUser) {
             return res.status(400).json({ error: 'Email already exists' });
         }
-
         const passwordHash = await bcrypt.hash(password, saltRounds);
         const newUser = new User({
             vorname,
@@ -73,9 +67,7 @@ router.post('/register', async(req, res) => {
             email,
             passwordHash,
         });
-
         await newUser.save();
-
         res.status(201).json({ message: 'New User saved', redirectTo: 'login' });
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -111,7 +103,6 @@ router.get('/login', async(req, res, next) => {
         res.sendFile('login.html', { root: 'public' });
     }
 });
-
 
 router.get('/dashboard', guard(), async(req, res, next) => {
     res.sendFile('dashboard.html', { root: 'public' });
@@ -149,7 +140,6 @@ router.post('/edit', guard(), async(req, res, next) => {
         if (!passwordMatch) {
             return res.status(401).json({ error: 'Incorrect current password' });
         }
-
         const newHashedPassword = await bcrypt.hash(newPassword, 10);
         user.passwordHash = newHashedPassword;
         await user.save();
