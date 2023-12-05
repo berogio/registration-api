@@ -4,19 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Authorisation</title>
+    <title>Authorization</title>
     <link rel="stylesheet" href="./stylesheets/style.css">
 </head>
 
 <body>
     <h2>Registrierung</h2>
 
-    <form action="registrierungsverarbeitung.php" method="POST">
+    <form action="/register" method="POST">
 
-        <label for="vorname">Vorname:</label>
+        <label for="vorname">First Name:</label>
         <input type="text" id="vorname" name="vorname" required><br><br>
 
-        <label for="nachname">Nachname:</label>
+        <label for="nachname">Last Name:</label>
         <input type="text" id="nachname" name="nachname" required><br><br>
 
         <label for="email">E-Mail:</label>
@@ -25,10 +25,10 @@
         <label for="passwort">Passwort:</label>
         <input type="password" id="passwort" name="passwort" required><br><br>
 
-        <input type="submit" value="Registrieren">
-        <input type="button" value="Einlogen" id="loginButton">
+        <input type="submit" value="Sign Up">
+        <input type="button" value="Log In" id="loginButton">
 
-        <a href="/contact" id="contactButton">Kontakt</a>
+        <a href="/contact" id="contactButton">Contact</a>
         <p id="error-message"></p>
 
     </form>

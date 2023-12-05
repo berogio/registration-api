@@ -9,14 +9,14 @@
 </head>
 
 <body>
-    <h2>Anmelden</h2>
+    <h2>Login</h2>
     <form action="anmeldeverarbeitung.php" method="POST" id="LogiForm">
         <label for="email">E-Mail:</label>
         <input type="email" id="LoginEmail" name="LoginEmail" required><br><br>
-        <label for="passwort">Passwort:</label>
+        <label for="passwort">Password:</label>
         <input type="password" id="LoginPasswort" name="LoginPasswort" required><br><br>
-        <input type="submit" value="Anmelden">
-        <input type="button" value="Password vergessen" id="forgotPasswordButton">
+        <input type="submit" value="Log In">
+        <input type="button" value="Forgot Password" id="forgotPasswordButton">
         <p id="errorMessage" style="color: red;"></p>
     </form>
     <script src="./javascripts/login.js"></script>
