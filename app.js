@@ -12,9 +12,8 @@ var session = require('express-session')
 
 const app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+
+
 
 let requstTime = function(req, res, next) {
     req.requesTime = Date.now()
@@ -31,18 +30,13 @@ app.use(session({
 const blockHTMLRequests = (req, res, next) => {
     const requestPath = req.path;
     if (requestPath.endsWith('.html')) {
-        // Block the request
         res.status(403).send('Access to HTML files is not allowed');
     } else {
-        // Continue with the next middleware
         next();
     }
 };
 
-// Verwende das Middleware für alle Routen
 app.use(blockHTMLRequests);
-
-
 
 app.use(requstTime)
 app.use(cors())
@@ -66,7 +60,7 @@ app.use(function(err, req, res, next) {
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
     res.status(err.status || 500);
-    res.render('error');
+    res.send('<h1>Error</h1><p>' + err.message + '</p>');
 });
 
 module.exports = app;
