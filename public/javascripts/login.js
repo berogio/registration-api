@@ -25,14 +25,14 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(response => response.json())
             .then(data => {
                 if (data.message === 'OK') {
-                    // Redirect to the panel page
-                    window.location.href = 'panel';
+
+                    window.location.href = 'dashboard';
                 } else {
                     errorMessageElement.textContent = 'Incorrect email or password';
                 }
             })
             .catch(error => {
-                console.error('Fehler beim Senden der Daten:', error);
+                console.error('Error Sending Data:', error);
             });
     });
 });

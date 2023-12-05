@@ -33,8 +33,8 @@ document.addEventListener("DOMContentLoaded", function() {
                         throw new Error(data.error);
                     });
                 } else {
-                    console.error('Fehler beim Registrieren:', response.statusText);
-                    throw new Error('Fehler beim Registrieren');
+                    console.error('Error during registration', response.statusText);
+                    throw new Error('Error during registration');
                 }
             })
             .then(data => {
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             })
             .catch(error => {
-                console.error('Fehler beim Senden der Daten:', error);
+                console.error('Error Sending Data', error);
             });
 
         function showError(errorMessage) {

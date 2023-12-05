@@ -3,7 +3,7 @@ const router = express.Router();
 const nodemailer = require('nodemailer');
 router.get('/contact', function(req, res, next) {
 
-    res.sendFile('kontakt.html', { root: 'public' });
+    res.sendFile('contact.html', { root: 'public' });
 });
 
 router.post('/contact', function(req, res, next) {

@@ -14,8 +14,8 @@ mongoose.connect("mongodb+srv://gberi2012:1OHgbKre249Xc3qf@cluster0.a2bfzeu.mong
 
 const passwordSchema = new passwordValidator();
 passwordSchema
-    .is().min(5) // Mindestlänge 5 Zeichen
-    .has().uppercase(); // Mindestens ein Großbuchstabe
+    .is().min(5)
+    .has().uppercase();
 
 const UserSchema = mongoose.Schema({
     vorname: {
@@ -93,7 +93,7 @@ router.post('/login', async(req, res, next) => {
         if (passwordMatch) {
             console.log(req.requesTime)
             req.session.user = user._id
-            res.status(200).json({ message: 'OK', redirectTo: 'panel.html' });
+            res.status(200).json({ message: 'OK', redirectTo: 'dashboard.html' });
         } else {
             res.status(401).json({ error: 'Incorrect password' });
         }
@@ -104,7 +104,7 @@ router.post('/login', async(req, res, next) => {
 
 router.get('/login', async(req, res, next) => {
     if (req.session.user) {
-        res.sendFile('panel.html', { root: 'public' });
+        res.sendFile('dashboard.html', { root: 'public' });
     } else {
         res.sendFile('login.html', { root: 'public' });
     }
@@ -120,8 +120,8 @@ let guard = function() {
     };
 };
 
-router.get('/panel', guard(), async(req, res, next) => {
-    res.sendFile('panel.html', { root: 'public' });
+router.get('/dashboard', guard(), async(req, res, next) => {
+    res.sendFile('dashboard.html', { root: 'public' });
 });
 
 router.post('/signout', async(req, res, next) => {
