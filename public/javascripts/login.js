@@ -2,34 +2,31 @@ document.addEventListener("DOMContentLoaded", function() {
     const loginForm = document.getElementById("LogiForm");
     const errorMessageElement = document.getElementById("errorMessage");
 
-    loginForm.addEventListener("submit", function(event) {
+    loginForm.addEventListener("submit", async function(event) {
         event.preventDefault();
-        const loginEmail = document.getElementById('LoginEmail').value;
-        const loginPassword = document.getElementById('LoginPasswort').value;
-        const LoginFormData = {
-            loginEmail: loginEmail,
-            loginPassword: loginPassword
-        };
-        const zielUrl = 'http://localhost:3000/login';
-        fetch(zielUrl, {
+
+        const { value: loginEmail } = document.getElementById('LoginEmail');
+        const { value: loginPassword } = document.getElementById('LoginPasswort');
+
+        try {
+            const response = await fetch('http://localhost:3000/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(LoginFormData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.message === 'OK') {
-
-                    window.location.href = 'dashboard';
-                } else {
-                    errorMessageElement.textContent = 'Incorrect email or password';
-                }
-            })
-            .catch(error => {
-                console.error('Error Sending Data:', error);
+                body: JSON.stringify({ loginEmail, loginPassword })
             });
+
+            const data = await response.json();
+
+            if (data.message === 'OK') {
+                window.location.href = 'dashboard';
+            } else {
+                errorMessageElement.textContent = 'Incorrect email or password';
+            }
+        } catch (error) {
+            console.error('Error Sending Data:', error);
+        }
     });
 });
 
