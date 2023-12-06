@@ -1,45 +1,11 @@
 const express = require('express');
-const mongoose = require('../models/db.js');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const validator = require('email-validator');
-const passwordValidator = require('password-validator');
+const passwordSchema = require('../models/validators.js')
 const { guard } = require('../middleware/AllMiddleware');
+const User = require('../models/user.js');
 
-
-const passwordSchema = new passwordValidator();
-passwordSchema
-    .is().min(5)
-    .has().uppercase();
-
-const UserSchema = mongoose.Schema({
-    vorname: {
-        type: String,
-        required: true
-    },
-    nachname: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
-        required: true,
-        validate: {
-            validator: validator.validate,
-            message: props => `${props.value} is not a valid email address!`
-        }
-    },
-    passwordHash: {
-        type: String,
-        required: true,
-        validate: {
-            validator: value => passwordSchema.validate(value),
-        }
-    }
-});
-
-
-const User = mongoose.model('User', UserSchema);
 
 router.post('/register', async(req, res) => {
     const saltRounds = 10;
