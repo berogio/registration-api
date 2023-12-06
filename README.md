@@ -29,6 +29,7 @@ Welcome to the Registration and Login System project! This web application allow
 - HTML5
 - CSS3
 - JavaScript (Node.js and Express for the backend)
+- MongoDB with Mongoose for the database
 - JWT for authentication
 - Nodemailer for email confirmation
 - Session management with express-session
