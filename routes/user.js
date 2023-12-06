@@ -1,16 +1,10 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const mongoose = require('../models/db.js');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const validator = require('email-validator');
 const passwordValidator = require('password-validator');
 const { guard } = require('../middleware/AllMiddleware');
-
-mongoose.connect("mongodb+srv://gberi2012:1OHgbKre249Xc3qf@cluster0.a2bfzeu.mongodb.net/?retryWrites=true&w=majority")
-    .then(a => console.log('Connected to MongoDb'))
-    .catch((error) => {
-        console.log(`${error}error connecting to MongoDb`)
-    });
 
 
 const passwordSchema = new passwordValidator();
@@ -44,10 +38,12 @@ const UserSchema = mongoose.Schema({
     }
 });
 
+
 const User = mongoose.model('User', UserSchema);
 
 router.post('/register', async(req, res) => {
     const saltRounds = 10;
+
     try {
         const { vorname, nachname, email, password } = req.body;
         if (!validator.validate(email)) {
