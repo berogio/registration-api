@@ -9,6 +9,8 @@ const index = require('./routes/index.js');
 const contact = require('./routes/contact.js');
 const { blockHTMLRequests, requstTime } = require('./middleware/AllMiddleware.js');
 const session = require('express-session')
+require('dotenv').config();
+
 
 const app = express();
 
@@ -42,5 +44,13 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.send('<h1>Error</h1><p>' + err.message + '</p>');
 });
+
+
+
+const port = process.env.PORTS
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
+
 
 module.exports = app;

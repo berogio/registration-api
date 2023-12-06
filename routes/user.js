@@ -66,10 +66,6 @@ router.get('/login', async(req, res, next) => {
     }
 });
 
-router.get('/dashboard', guard(), async(req, res, next) => {
-    res.sendFile('dashboard.html', { root: 'public' });
-});
-
 router.post('/signout', async(req, res, next) => {
     req.session.destroy(err => {
         if (err) {
@@ -110,6 +106,10 @@ router.post('/edit', guard(), async(req, res, next) => {
         console.error('Error changing password:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
+});
+
+router.get('/dashboard', guard(), async(req, res, next) => {
+    res.sendFile('dashboard.html', { root: 'public' });
 });
 
 module.exports = router;

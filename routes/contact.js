@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
+require('dotenv').config();
 
 router.get('/contact', function(req, res, next) {
     res.sendFile('contact.html', { root: 'public' });
@@ -19,7 +20,7 @@ router.post('/contact', function(req, res, next) {
         service: 'gmail',
         auth: {
             user: 'gberi2012@agruni.edu.ge',
-            pass: ''
+            pass: process.env.EMAIL_CLIENT_PASSWORD
         }
     });
 
