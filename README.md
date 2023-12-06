@@ -23,6 +23,7 @@ Welcome to the Registration and Login System project! This web application allow
 - JWT (JSON Web Tokens): Utilize JWT for secure authentication.
 - Nodemailer: Send confirmation emails for successful registration.
 - Responsive Design: Ensure optimal viewing on various devices.
+-  **Internationalization (i18n):** Localize and translate messages for different languages using i18n.
 
 ## Technologies Used
 
