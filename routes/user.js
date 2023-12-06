@@ -5,7 +5,6 @@ const validator = require('email-validator');
 const passwordSchema = require('../models/validators.js')
 const { guard } = require('../middleware/AllMiddleware');
 const User = require('../models/user.js');
-
 const i18n = require('../i18n.js');
 
 router.post('/register', async(req, res) => {
@@ -39,14 +38,12 @@ router.post('/register', async(req, res) => {
 
 router.post('/login', async(req, res, next) => {
     try {
-        const loginPassword = req.body.loginPassword;
-        const loginEmail = req.body.loginEmail;
+        const { loginPassword, loginEmail } = req.body;
         const user = await User.findOne({ email: loginEmail });
         if (!user) {
             return res.status(404).json({ error: i18n.__('messages.userNotFound') });
         }
         const passwordMatch = await bcrypt.compare(loginPassword, user.passwordHash);
-
         if (passwordMatch) {
             console.log(req.requesTime)
             req.session.user = user._id
@@ -66,7 +63,6 @@ router.get('/login', async(req, res, next) => {
         res.sendFile('login.html', { root: 'public' });
     }
 });
-
 
 router.post('/edit', guard(), async(req, res, next) => {
     try {

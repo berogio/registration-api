@@ -7,6 +7,7 @@ const cors = require('cors')
 const users = require('./routes/user.js');
 const index = require('./routes/index.js');
 const contact = require('./routes/contact.js');
+const passForgot = require('./routes/passForgot.js')
 const { blockHTMLRequests, requstTime } = require('./middleware/AllMiddleware.js');
 const session = require('express-session')
 require('dotenv').config();
@@ -33,6 +34,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/', users);
 app.use('/', contact);
+app.use('/', passForgot);
+
 
 app.use(function(req, res, next) {
     next(createError(404));
