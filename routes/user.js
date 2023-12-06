@@ -6,6 +6,7 @@ const passwordSchema = require('../models/validators.js')
 const { guard } = require('../middleware/AllMiddleware');
 const User = require('../models/user.js');
 
+const i18n = require('../i18n.js');
 
 router.post('/register', async(req, res) => {
     const saltRounds = 10;
@@ -13,14 +14,14 @@ router.post('/register', async(req, res) => {
     try {
         const { vorname, nachname, email, password } = req.body;
         if (!validator.validate(email)) {
-            return res.status(400).json({ error: 'Invalid email address' });
+            return res.status(400).json({ error: i18n.__('messages.invalidEmail') });
         }
         if (!passwordSchema.validate(password)) {
-            return res.status(400).json({ error: 'Password must be at least 5 characters long and contain at least one uppercase letter.' });
+            return res.status(400).json({ error: i18n.__('messages.passwordRequirements') });
         }
         const existingUser = await User.findOne({ email });
         if (existingUser) {
-            return res.status(400).json({ error: 'Email already exists' });
+            return res.status(400).json({ error: i18n.__('messages.emailExists') });
         }
         const passwordHash = await bcrypt.hash(password, saltRounds);
         const newUser = new User({
@@ -30,9 +31,9 @@ router.post('/register', async(req, res) => {
             passwordHash,
         });
         await newUser.save();
-        res.status(201).json({ message: 'New User saved', redirectTo: 'login' });
+        res.status(201).json({ message: i18n.__('success.newUserSaved'), redirectTo: 'login' });
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ error: i18n.__('messages.internalServerError') });
     }
 });
 
@@ -42,19 +43,19 @@ router.post('/login', async(req, res, next) => {
         const loginEmail = req.body.loginEmail;
         const user = await User.findOne({ email: loginEmail });
         if (!user) {
-            return res.status(404).json({ error: 'User not found' });
+            return res.status(404).json({ error: i18n.__('messages.userNotFound') });
         }
         const passwordMatch = await bcrypt.compare(loginPassword, user.passwordHash);
 
         if (passwordMatch) {
             console.log(req.requesTime)
             req.session.user = user._id
-            res.status(200).json({ message: 'OK', redirectTo: 'dashboard.html' });
+            res.status(200).json({ message: i18n.__('success.loginSuccess'), redirectTo: 'dashboard.html' });
         } else {
-            res.status(401).json({ error: 'Incorrect password' });
+            res.status(401).json({ error: i18n.__('messages.incorrectPassword') });
         }
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.status(500).json({ error: i18n.__('messages.internalServerError') });
     }
 });
 
@@ -66,11 +67,40 @@ router.get('/login', async(req, res, next) => {
     }
 });
 
+
+router.post('/edit', guard(), async(req, res, next) => {
+    try {
+        const userId = req.session.user;
+        if (!userId) {
+            return res.status(401).json({ error: i18n.__('messages.notAuthenticated') });
+        }
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ error: i18n.__('messages.userNotFound') });
+        }
+        const { currentPassword, newPassword } = req.body;
+        if (!passwordSchema.validate(newPassword)) {
+            return res.status(400).json({ error: i18n.__('messages.passwordRequirements') });
+        }
+        const passwordMatch = await bcrypt.compare(currentPassword, user.passwordHash);
+        if (!passwordMatch) {
+            return res.status(401).json({ error: i18n.__('messages.incorrectCurrentPassword') });
+        }
+        const newHashedPassword = await bcrypt.hash(newPassword, 10);
+        user.passwordHash = newHashedPassword;
+        await user.save();
+        res.status(200).json({ message: i18n.__('success.passwordChanged') });
+    } catch (error) {
+        console.error('Error changing password:', error);
+        res.status(500).json({ error: i18n.__('messages.internalServerError') });
+    }
+});
+
 router.post('/signout', async(req, res, next) => {
     req.session.destroy(err => {
         if (err) {
             console.error('Error destroying session:', err);
-            return res.status(500).json({ error: 'Internal Server Error' });
+            return res.status(500).json({ error: i18n.__('messages.internalServerError') });
         }
         res.redirect('/login');
     });
@@ -78,34 +108,6 @@ router.post('/signout', async(req, res, next) => {
 
 router.get('/edit', guard(), async(req, res, next) => {
     res.sendFile('edit.html', { root: 'public' });
-});
-
-router.post('/edit', guard(), async(req, res, next) => {
-    try {
-        const userId = req.session.user;
-        if (!userId) {
-            return res.status(401).json({ error: 'User not authenticated' });
-        }
-        const user = await User.findById(userId);
-        if (!user) {
-            return res.status(404).json({ error: 'User not found' });
-        }
-        const { currentPassword, newPassword } = req.body;
-        if (!passwordSchema.validate(newPassword)) {
-            return res.status(400).json({ error: 'Password must be at least 5 characters long and contain at least one uppercase letter.' });
-        }
-        const passwordMatch = await bcrypt.compare(currentPassword, user.passwordHash);
-        if (!passwordMatch) {
-            return res.status(401).json({ error: 'Incorrect current password' });
-        }
-        const newHashedPassword = await bcrypt.hash(newPassword, 10);
-        user.passwordHash = newHashedPassword;
-        await user.save();
-        res.status(200).json({ message: 'Password changed successfully' });
-    } catch (error) {
-        console.error('Error changing password:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
 });
 
 router.get('/dashboard', guard(), async(req, res, next) => {

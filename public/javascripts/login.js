@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (data.message === 'OK') {
                 window.location.href = 'dashboard';
             } else {
-                errorMessageElement.textContent = 'Incorrect email or password';
+                errorMessageElement.textContent = data.error
             }
         } catch (error) {
             console.error('Error Sending Data:', error);

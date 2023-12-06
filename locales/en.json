@@ -1,0 +1,17 @@
+{
+  "messages": {
+    "invalidEmail": "Invalid email address",
+    "passwordRequirements": "Password must be at least 5 characters long and contain at least one uppercase letter.",
+    "emailExists": "Email already exists",
+    "userNotFound": "User not found",
+    "incorrectPassword": "Incorrect password",
+    "notAuthenticated": "User not authenticated",
+    "incorrectCurrentPassword": "Incorrect current password",
+    "internalServerError": "Internal Server Error"
+  },
+  "success": {
+    "newUserSaved": "New User saved",
+    "loginSuccess": "OK",
+    "passwordChanged": "Password changed successfully"
+  }
+}
