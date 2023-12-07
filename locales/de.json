@@ -7,11 +7,13 @@
     "incorrectPassword": "Falsches Passwort",
     "notAuthenticated": "Benutzer nicht authentifiziert",
     "incorrectCurrentPassword": "Falsches aktuelles Passwort",
-    "internalServerError": "Interner Serverfehler"
+    "internalServerError": "Interner Serverfehler",
+    "emailSendingError": "Fehler beim Senden der E-Mail"
   },
   "success": {
     "newUserSaved": "Neuer Benutzer gespeichert",
     "loginSuccess": "OK",
-    "passwordChanged": "Passwort erfolgreich geändert"
+    "passwordChanged": "Passwort erfolgreich geändert",
+    "emailSentSuccessfully": "E-Mail erfolgreich gesendet"
   }
 }
