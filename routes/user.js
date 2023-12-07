@@ -106,8 +106,6 @@ router.get('/edit', guard(), async(req, res, next) => {
     res.sendFile('edit.html', { root: 'public' });
 });
 
-router.get('/dashboard', guard(), async(req, res, next) => {
-    res.sendFile('dashboard.html', { root: 'public' });
-});
+
 
 module.exports = router;
