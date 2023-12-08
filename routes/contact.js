@@ -4,7 +4,7 @@ const nodemailer = require('nodemailer');
 require('dotenv').config();
 
 router.get('/contact', function(req, res, next) {
-    res.sendFile('contact.html', { root: 'public' });
+    res.render('contact');
 });
 
 router.post('/contact', function(req, res, next) {

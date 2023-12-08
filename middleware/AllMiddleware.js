@@ -18,7 +18,7 @@ let guard = function() {
         if (req.session.user) {
             next();
         } else {
-            res.status(401).json('not authorised');
+            res.status(401).redirect('/login');
         }
     };
 };

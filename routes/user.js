@@ -58,9 +58,9 @@ router.post('/login', async(req, res, next) => {
 
 router.get('/login', async(req, res, next) => {
     if (req.session.user) {
-        res.sendFile('dashboard.html', { root: 'public' });
+        res.render('dashboard');
     } else {
-        res.sendFile('login.html', { root: 'public' });
+        res.render('login');
     }
 });
 
@@ -85,7 +85,7 @@ router.post('/edit', guard(), async(req, res, next) => {
         const newHashedPassword = await bcrypt.hash(newPassword, 10);
         user.passwordHash = newHashedPassword;
         await user.save();
-        res.status(200).json({ message: i18n.__('success.passwordChanged') });
+        res.status(200).json({ message: i18n.__('success.passwordChanged') })
     } catch (error) {
         console.error('Error changing password:', error);
         res.status(500).json({ error: i18n.__('messages.internalServerError') });
@@ -103,9 +103,7 @@ router.post('/signout', async(req, res, next) => {
 });
 
 router.get('/edit', guard(), async(req, res, next) => {
-    res.sendFile('edit.html', { root: 'public' });
+    res.render('edit');
 });
-
-
 
 module.exports = router;

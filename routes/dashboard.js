@@ -3,7 +3,7 @@ const router = express.Router();
 const { guard } = require('../middleware/AllMiddleware');
 
 router.get('/dashboard', guard(), async(req, res, next) => {
-    res.sendFile('dashboard.html', { root: 'public' });
+    res.render('dashboard');
 });
 
 module.exports = router;
