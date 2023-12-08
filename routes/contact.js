@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
+const i18n = require('../i18n.js');
 require('dotenv').config();
 
 router.get('/contact', function(req, res, next) {
@@ -34,12 +35,13 @@ router.post('/contact', function(req, res, next) {
     transporter.sendMail(mailOptions, function(error, info) {
         if (error) {
             console.log(error);
-            res.status(500).send('Error sending the E-Mail');
+            res.status(500).json({ error: i18n.__('messages.emailSendingError') });
         } else {
             console.log('E-Mail sent: ' + info.response);
-            res.status(200).send('E-Mail sent successfully');
+            res.status(200).json({ message: i18n.__('success.emailSentSuccessfully') });
         }
     });
+
 });
 
 module.exports = router;
