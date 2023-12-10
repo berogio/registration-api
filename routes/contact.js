@@ -5,10 +5,7 @@ const i18n = require('../i18n.js');
 require('dotenv').config();
 
 router.get('/contact', async(req, res, next) => {
-
     const currentLocale = req.query.lang || i18n.getLocale();
-
-
     i18n.setLocale(req, currentLocale);
 
     res.render('contact', {

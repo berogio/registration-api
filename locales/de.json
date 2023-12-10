@@ -1,122 +1,122 @@
 {
-	"messages": {
-		"invalidEmail": "Ungültige E-Mail-Adresse",
-		"passwordRequirements": "Das Passwort muss mindestens 5 Zeichen lang sein und mindestens einen Großbuchstaben enthalten.",
-		"emailExists": "E-Mail existiert bereits",
-		"userNotFound": "Benutzer nicht gefunden",
-		"incorrectPassword": "Falsches Passwort",
-		"notAuthenticated": "Benutzer nicht authentifiziert",
-		"incorrectCurrentPassword": "Falsches aktuelles Passwort",
-		"internalServerError": "Interner Serverfehler",
-		"emailSendingError": "Fehler beim Senden der E-Mail",
-		"vornameValidation": "Vorname sollte nur Buchstaben enthalten, mindestens 2 Zeichen lang und nicht mehr als 50 Zeichen haben",
-		"nachnameValidation": "Nachname sollte nur Buchstaben enthalten, mindestens 2 Zeichen lang und nicht mehr als 50 Zeichen haben",
-		"emailValidation": "Die E-Mail sollte nicht mehr als 100 Zeichen haben"
-	},
-	"success": {
-		"newUserSaved": "Neuer Benutzer gespeichert",
-		"loginSuccess": "OK",
-		"passwordChanged": "Passwort erfolgreich geändert",
-		"emailSentSuccessfully": "E-Mail erfolgreich gesendet"
-	},
-	"authorization": {
-		"title": "Autorisierung",
-		"registration": {
-			"heading": "Registrierung",
-			"firstName": "Vorname:",
-			"lastName": "Nachname:",
-			"email": "E-Mail:",
-			"password": "Passwort:",
-			"signUp": "Registrieren",
-			"logIn": "Einloggen",
-			"contact": "Kontakt",
-			"errorMessage": ""
-		}
-	},
-	"login": {
-		"title": "Anmelden",
-		"login": {
-			"heading": "Einloggen",
-			"email": "E-Mail:",
-			"password": "Passwort:",
-			"logIn": "Einloggen",
-			"forgotPassword": "Passwort vergessen",
-			"errorMessage": ""
-		}
-	},
-	"passwordChange": {
-		"title": "Passwort ändern",
-		"editPassword": {
-			"heading": "Passwort bearbeiten",
-			"currentPassword": "Aktuelles Passwort:",
-			"newPassword": "Neues Passwort:",
-			"confirmNewPassword": "Neues Passwort bestätigen:",
-			"changePassword": "Passwort ändern"
-		}
-	},
-	"profileOverview": {
-		"title": "Profilübersicht",
-		"card": {
-			"profileImageAlt": "Profilbild",
-			"editProfileButton": "Passwort bearbeiten",
-			"logoutButton": "Ausloggen",
-			"contactButton": "Kontakt"
-		}
-	},
-	"contactForm": {
-		"title": "Kontaktformular",
-		"form": {
-			"heading": "Kontaktformular",
-			"nameLabel": "Name:",
-			"namePlaceholder": "Dein Name",
-			"emailLabel": "E-Mail:",
-			"emailPlaceholder": "Deine E-Mail",
-			"messageLabel": "Nachricht:",
-			"messagePlaceholder": "Schreibe hier deine Nachricht",
-			"submitButton": "Senden"
-		}
-	},
-	" authorization": {
-		"registration": {
-			"signUp ": " authorization.registration.signUp ",
-			"logIn ": " authorization.registration.logIn "
-		}
-	},
-	"Registration Sign Up": "Registration Sign Up",
-	"Registration Log In": "Registration Log In",
-	"document": {
-		"title": "document.title",
-		"login": {
-			"heading": "document.login.heading",
-			"emailLabel": "document.login.emailLabel",
-			"passwordLabel": "document.login.passwordLabel"
-		}
-	},
-	" document": {
-		"login": {
-			"logInButton ": " document.login.logInButton ",
-			"forgotPasswordButton ": " document.login.forgotPasswordButton "
-		}
-	},
-	" login": {
-		"login": {
-			"logIn ": " login.login.logIn ",
-			"forgotPassword ": " login.login.forgotPassword "
-		}
-	},
-	" passwordChange": {
-		"editPassword": {
-			"changePassword ": " passwordChange.editPassword.changePassword "
-		}
-	},
-	" profileOverview": {
-		"card": {
-			"profileImageAlt ": " profileOverview.card.profileImageAlt "
-		}
-	},
-	" contactForm": {
-		"form": {
-			"submitButton ": " contactForm.form.submitButton "
-		}
-	}
+  "messages": {
+    "invalidEmail": "Ungültige E-Mail-Adresse",
+    "passwordRequirements": "Das Passwort muss mindestens 5 Zeichen lang sein und mindestens einen Großbuchstaben enthalten.",
+    "emailExists": "E-Mail existiert bereits",
+    "userNotFound": "Benutzer nicht gefunden",
+    "incorrectPassword": "Falsches Passwort",
+    "notAuthenticated": "Benutzer nicht authentifiziert",
+    "incorrectCurrentPassword": "Falsches aktuelles Passwort",
+    "internalServerError": "Interner Serverfehler",
+    "emailSendingError": "Fehler beim Senden der E-Mail",
+    "vornameValidation": "Vorname sollte nur Buchstaben enthalten, mindestens 2 Zeichen lang und nicht mehr als 50 Zeichen haben",
+    "nachnameValidation": "Nachname sollte nur Buchstaben enthalten, mindestens 2 Zeichen lang und nicht mehr als 50 Zeichen haben",
+    "emailValidation": "Die E-Mail sollte nicht mehr als 100 Zeichen haben"
+  },
+  "success": {
+    "newUserSaved": "Neuer Benutzer gespeichert",
+    "loginSuccess": "OK",
+    "passwordChanged": "Passwort erfolgreich geändert",
+    "emailSentSuccessfully": "E-Mail erfolgreich gesendet"
+  },
+  "authorization": {
+    "title": "Autorisierung",
+    "registration": {
+      "heading": "Registrierung",
+      "firstName": "Vorname:",
+      "lastName": "Nachname:",
+      "email": "E-Mail:",
+      "password": "Passwort:",
+      "signUp": "Registrieren",
+      "logIn": "Einloggen",
+      "contact": "Kontakt",
+      "errorMessage": ""
+    }
+  },
+  "login": {
+    "title": "Anmelden",
+    "login": {
+      "heading": "Einloggen",
+      "email": "E-Mail:",
+      "password": "Passwort:",
+      "logIn": "Einloggen",
+      "forgotPassword": "Passwort vergessen",
+      "errorMessage": ""
+    }
+  },
+  "passwordChange": {
+    "title": "Passwort ändern",
+    "editPassword": {
+      "heading": "Passwort bearbeiten",
+      "currentPassword": "Aktuelles Passwort:",
+      "newPassword": "Neues Passwort:",
+      "confirmNewPassword": "Neues Passwort bestätigen:",
+      "changePassword": "Passwort ändern"
+    }
+  },
+  "profileOverview": {
+    "title": "Profilübersicht",
+    "card": {
+      "profileImageAlt": "Profilbild",
+      "editProfileButton": "Passwort bearbeiten",
+      "logoutButton": "Ausloggen",
+      "contactButton": "Kontakt"
+    }
+  },
+  "contactForm": {
+    "title": "Kontaktformular",
+    "form": {
+      "heading": "Kontaktformular",
+      "nameLabel": "Name:",
+      "namePlaceholder": "Dein Name",
+      "emailLabel": "E-Mail:",
+      "emailPlaceholder": "Deine E-Mail",
+      "messageLabel": "Nachricht:",
+      "messagePlaceholder": "Schreibe hier deine Nachricht",
+      "submitButton": "Senden"
+    }
+  },
+  " authorization": {
+    "registration": {
+      "signUp ": " authorization.registration.signUp ",
+      "logIn ": " authorization.registration.logIn "
+    }
+  },
+  "Registration Sign Up": "Anmeldung Registrieren",
+  "Registration Log In": "Anmeldung Einloggen",
+  "document": {
+    "title": "document.title",
+    "login": {
+      "heading": "document.login.heading",
+      "emailLabel": "document.login.emailLabel",
+      "passwordLabel": "document.login.passwordLabel"
+    }
+  },
+  " document": {
+    "login": {
+      "logInButton ": " document.login.logInButton ",
+      "forgotPasswordButton ": " document.login.forgotPasswordButton "
+    }
+  },
+  " login": {
+    "login": {
+      "logIn ": " login.login.logIn ",
+      "forgotPassword ": " login.login.forgotPassword "
+    }
+  },
+  " passwordChange": {
+    "editPassword": {
+      "changePassword ": " passwordChange.editPassword.changePassword "
+    }
+  },
+  " profileOverview": {
+    "card": {
+      "profileImageAlt ": " profileOverview.card.profileImageAlt "
+    }
+  },
+  " contactForm": {
+    "form": {
+      "submitButton ": " contactForm.form.submitButton "
+    }
+  }
 }

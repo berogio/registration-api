@@ -143,3 +143,48 @@ body {
 .submit-button:hover {
     background-color: #45a049;
 }
+
+.language-selector {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.language-option {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+}
+
+.language-option img {
+    width: 20px;
+    height: 15px;
+    margin-right: 5px;
+}
+
+.selected {
+    font-weight: bold;
+}
+
+.smiley-button {
+    height: 36px;
+    font-size: 25px;
+    text-decoration: none;
+    border-radius: 15px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.smiley-button:hover {
+    background-color: #416074;
+}
+
+.center-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}

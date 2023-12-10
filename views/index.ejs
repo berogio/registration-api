@@ -6,14 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Authorization</title>
     <link rel="stylesheet" href="./stylesheets/style.css">
+
 </head>
 
 <body>
     <h2>
         <%= __("authorization.registration.heading") %>
     </h2>
-    <form action="/register" method="POST">
 
+    <form action="/register" method="POST" class="form-container">
+        <div class="center-container">
+            <a href="/contact" id="contactButton" class="smiley-button">
+                📧
+            </a>
+            <%- include('languageSelector') %>
+
+        </div>
         <label for="vorname"><%= __("authorization.registration.firstName") %></label>
         <input type="text" id="vorname" name="vorname" required><br><br>
 
@@ -29,12 +37,10 @@
         <input type="submit" value="<%= __('Registration Sign Up') %>">
         <input type="button" value="<%= __('Registration Log In') %>" id="loginButton">
 
-        <a href="/contact" id="contactButton">
-            <%= __("authorization.registration.contact") %>
-        </a>
-        <p id="error-message"></p>
 
+        <p id="error-message"></p>
     </form>
+
     <script type="module" src="./javascripts/app.js"></script>
 </body>
 

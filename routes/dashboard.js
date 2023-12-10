@@ -6,7 +6,6 @@ const i18n = require('../i18n.js');
 
 router.get('/dashboard', guard(), async(req, res, next) => {
     try {
-
         const userId = req.session.user;
         const user = await User.findById(userId);
         const currentLocale = req.query.lang || i18n.getLocale();
