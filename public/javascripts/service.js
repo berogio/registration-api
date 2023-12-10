@@ -27,7 +27,6 @@ export const fetchData = async(endpoint, method, data) => {
 export function updateLanguage() {
     const selectedLanguage = localStorage.getItem('lang') || 'en';
     const currentLanguage = getQueryParam('lang') || 'en';
-
     if (selectedLanguage !== currentLanguage) {
         window.location.href = window.location.pathname + '?lang=' + selectedLanguage;
     }
@@ -37,4 +36,5 @@ function getQueryParam(param) {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     return urlParams.get(param);
+
 }
