@@ -58,9 +58,9 @@ router.post('/login', async(req, res, next) => {
 
 router.get('/login', async(req, res, next) => {
     if (req.session.user) {
-        res.render('dashboard');
+        res.redirect('/dashboard');
     } else {
-        res.render('login');
+        res.redirect('/login');
     }
 });
 
