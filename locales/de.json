@@ -18,5 +18,62 @@
     "loginSuccess": "OK",
     "passwordChanged": "Passwort erfolgreich geändert",
     "emailSentSuccessfully": "E-Mail erfolgreich gesendet"
+  },
+  "authorization": {
+    "title": "Autorisierung",
+    "registration": {
+      "heading": "Registrierung",
+      "firstName": "Vorname:",
+      "lastName": "Nachname:",
+      "email": "E-Mail:",
+      "password": "Passwort:",
+      "signUp": "Registrieren",
+      "logIn": "Einloggen",
+      "contact": "Kontakt",
+      "errorMessage": ""
+    }
+  },
+  "login": {
+    "title": "Dokument",
+    "login": {
+      "heading": "Einloggen",
+      "email": "E-Mail:",
+      "password": "Passwort:",
+      "logIn": "Einloggen",
+      "forgotPassword": "Passwort vergessen",
+      "errorMessage": ""
+    }
+  },
+  "passwordChange": {
+    "title": "Passwort ändern",
+    "editPassword": {
+      "heading": "Passwort bearbeiten",
+      "currentPassword": "Aktuelles Passwort:",
+      "newPassword": "Neues Passwort:",
+      "confirmNewPassword": "Neues Passwort bestätigen:",
+      "changePassword": "Passwort ändern"
+    }
+  },
+  "profileOverview": {
+    "title": "Profilübersicht",
+    "card": {
+      "profileImageAlt": "Profilbild",
+      "editProfileButton": "Passwort bearbeiten",
+      "logoutButton": "Ausloggen",
+      "contactButton": "Kontakt"
+    }
+  },
+  "contactForm": {
+    "title": "Kontaktformular",
+    "form": {
+      "heading": "Kontaktformular",
+      "nameLabel": "Name:",
+      "namePlaceholder": "Dein Name",
+      "emailLabel": "E-Mail:",
+      "emailPlaceholder": "Deine E-Mail",
+      "messageLabel": "Nachricht:",
+      "messagePlaceholder": "Schreibe hier deine Nachricht",
+      "submitButton": "Senden"
+    }
   }
 }
