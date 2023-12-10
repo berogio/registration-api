@@ -72,12 +72,8 @@ router.get('/login', async(req, res, next) => {
     if (req.session.user) {
         res.redirect('/dashboard');
     } else {
-
         const currentLocale = req.query.lang || i18n.getLocale();
-
-
         i18n.setLocale(req, currentLocale);
-
         res.render('login', {
             currentLocale: currentLocale,
             title: res.__('authorization.title'),
@@ -125,9 +121,18 @@ router.post('/signout', async(req, res, next) => {
     });
 });
 
-
 router.get('/edit', guard(), async(req, res, next) => {
-    res.render('edit');
+    const currentLocale = req.query.lang || i18n.getLocale();
+
+
+    i18n.setLocale(req, currentLocale);
+
+    res.render('edit', {
+        currentLocale: currentLocale,
+        title: res.__('authorization.title'),
+        registrationHeading: res.__('authorization.registration.heading'),
+        currentLocale: currentLocale,
+    });
 });
 
 module.exports = router;

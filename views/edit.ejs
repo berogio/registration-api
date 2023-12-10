@@ -1,29 +1,31 @@
+<!-- edit.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Change</title>
+    <title>
+        <%= __("passwordChange.title") %>
+    </title>
     <link rel="stylesheet" href="./stylesheets/style.css">
-    <style>
-
-    </style>
 </head>
 
 <body>
-    <h2>Edit Password</h2>
+    <h2>
+        <%= __("passwordChange.editPassword.heading") %>
+    </h2>
     <form id="passwordChangeForm">
-        <label for="currentPassword">Current Password:</label>
+        <label for="currentPassword"><%= __("passwordChange.editPassword.currentPassword") %>:</label>
         <input type="password" id="currentPassword" name="currentPassword" required>
 
-        <label for="newPassword">New Password:</label>
+        <label for="newPassword"><%= __("passwordChange.editPassword.newPassword") %>:</label>
         <input type="password" id="newPassword" name="newPassword" required>
 
-        <label for="confirmPassword">Confirm New Password:</label>
+        <label for="confirmPassword"><%= __("passwordChange.editPassword.confirmNewPassword") %>:</label>
         <input type="password" id="confirmPassword" name="confirmPassword" required>
 
-        <input type="submit" value="Change Password">
+        <input type="submit" value="<%= __('passwordChange.editPassword.changePassword') %>">
     </form>
     <script type="module" src="./javascripts/edit.js"></script>
 </body>
