@@ -1,3 +1,4 @@
+<!-- profileOverview.ejs -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,13 +6,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./stylesheets/style.css">
-    <title>Profile Overview</title>
+    <title>
+        <%= __("profileOverview.title") %>
+    </title>
 </head>
 
 <body>
     <div class="card-container">
         <div class="profile-card">
-            <img src="user-profile.jpg" alt="Profilbild" id="profileImage">
+            <img src="user-profile.jpg" alt="<%= __(" profileOverview.card.profileImageAlt ") %>" id="profileImage">
             <h2 id="name">
                 <%= user.vorname %>
                     <%= user.nachname %>
@@ -19,9 +22,11 @@
             <p id="email">
                 <%= user.email %>
             </p>
-            <button id="editProfileButton">Edit Password</button>
-            <button id="logoutButton">Logout</button>
-            <a href="/contact" id="contactButton">Contakt</a>
+            <button id="editProfileButton"><%= __("profileOverview.card.editProfileButton") %></button>
+            <button id="logoutButton"><%= __("profileOverview.card.logoutButton") %></button>
+            <a href="/contact" id="contactButton">
+                <%= __("profileOverview.card.contactButton") %>
+            </a>
         </div>
     </div>
     <script type="module" src="./javascripts/dashboard.js"></script>

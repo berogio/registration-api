@@ -108,5 +108,15 @@
 		"editPassword": {
 			"changePassword ": " passwordChange.editPassword.changePassword "
 		}
+	},
+	" profileOverview": {
+		"card": {
+			"profileImageAlt ": " profileOverview.card.profileImageAlt "
+		}
+	},
+	" contactForm": {
+		"form": {
+			"submitButton ": " contactForm.form.submitButton "
+		}
 	}
 }

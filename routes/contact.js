@@ -4,8 +4,17 @@ const nodemailer = require('nodemailer');
 const i18n = require('../i18n.js');
 require('dotenv').config();
 
-router.get('/contact', function(req, res, next) {
-    res.render('contact');
+router.get('/contact', async(req, res, next) => {
+
+    const currentLocale = req.query.lang || i18n.getLocale();
+
+
+    i18n.setLocale(req, currentLocale);
+
+    res.render('contact', {
+        title: res.__('contactForm.title'),
+        currentLocale: currentLocale,
+    });
 });
 
 router.post('/contact', function(req, res, next) {

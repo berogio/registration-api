@@ -2,14 +2,23 @@ const express = require('express');
 const router = express.Router();
 const { guard } = require('../middleware/AllMiddleware');
 const User = require('../models/user.js');
+const i18n = require('../i18n.js');
 
 router.get('/dashboard', guard(), async(req, res, next) => {
     try {
+
         const userId = req.session.user;
         const user = await User.findById(userId);
-        if (user) {
+        const currentLocale = req.query.lang || i18n.getLocale();
 
-            res.render('dashboard', { user });
+        i18n.setLocale(req, currentLocale);
+
+        if (user) {
+            res.render('dashboard', {
+                user,
+                title: res.__('profileOverview.title'),
+                currentLocale: currentLocale,
+            });
         } else {
             res.status(401).redirect('/login');
         }
