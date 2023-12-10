@@ -2,9 +2,7 @@ import { fetchData, updateLanguage } from './service.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     updateLanguage()
-    const form = document.getElementById("contactForm");
-    const submitBtn = document.getElementById("submitBtn");
-
+    const submitBtn = document.querySelector("input[type='submit']");
     submitBtn.addEventListener("click", async() => {
         try {
             const { name, email, message } = ['name', 'email', 'message'].reduce((acc, id) => {
