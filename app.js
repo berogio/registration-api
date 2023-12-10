@@ -12,6 +12,7 @@ const dashboard = require('./routes/dashboard.js')
 const { blockHTMLRequests, requstTime } = require('./middleware/AllMiddleware.js');
 const session = require('express-session')
 const ejs = require('ejs');
+const i18n = require('./i18n.js')
 require('dotenv').config();
 
 const app = express();
@@ -31,6 +32,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(i18n.init);
 
 app.set('view engine', 'ejs');
 

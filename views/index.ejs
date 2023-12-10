@@ -9,25 +9,29 @@
 </head>
 
 <body>
-    <h2>Registrierung</h2>
+    <h2>
+        <%= __("authorization.registration.heading") %>
+    </h2>
     <form action="/register" method="POST">
 
-        <label for="vorname">First Name:</label>
+        <label for="vorname"><%= __("authorization.registration.firstName") %></label>
         <input type="text" id="vorname" name="vorname" required><br><br>
 
-        <label for="nachname">Last Name:</label>
+        <label for="nachname"><%= __("authorization.registration.lastName") %></label>
         <input type="text" id="nachname" name="nachname" required><br><br>
 
-        <label for="email">E-Mail:</label>
+        <label for="email"><%= __("authorization.registration.email") %></label>
         <input type="email" id="email" name="email" required><br><br>
 
-        <label for="passwort">Passwort:</label>
+        <label for="passwort"><%= __("authorization.registration.password") %></label>
         <input type="password" id="passwort" name="passwort" required><br><br>
 
-        <input type="submit" value="Sign Up">
-        <input type="button" value="Log In" id="loginButton">
+        <input type="submit" value="<%= __('Registration Sign Up') %>">
+        <input type="button" value="<%= __('Registration Log In') %>" id="loginButton">
 
-        <a href="/contact" id="contactButton">Contact</a>
+        <a href="/contact" id="contactButton">
+            <%= __("authorization.registration.contact") %>
+        </a>
         <p id="error-message"></p>
 
     </form>

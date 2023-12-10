@@ -34,7 +34,7 @@
     }
   },
   "login": {
-    "title": "Dokument",
+    "title": "Anmelden",
     "login": {
       "heading": "Einloggen",
       "email": "E-Mail:",
@@ -74,6 +74,34 @@
       "messageLabel": "Nachricht:",
       "messagePlaceholder": "Schreibe hier deine Nachricht",
       "submitButton": "Senden"
+    }
+  },
+  " authorization": {
+    "registration": {
+      "signUp ": " authorization.registration.signUp ",
+      "logIn ": " authorization.registration.logIn "
+    }
+  },
+  "Registration Sign Up": "Registration Sign Up",
+  "Registration Log In": "Registration Log In",
+  "document": {
+    "title": "document.title",
+    "login": {
+      "heading": "document.login.heading",
+      "emailLabel": "document.login.emailLabel",
+      "passwordLabel": "document.login.passwordLabel"
+    }
+  },
+  " document": {
+    "login": {
+      "logInButton ": " document.login.logInButton ",
+      "forgotPasswordButton ": " document.login.forgotPasswordButton "
+    }
+  },
+  " login": {
+    "login": {
+      "logIn ": " login.login.logIn ",
+      "forgotPassword ": " login.login.forgotPassword "
     }
   }
 }

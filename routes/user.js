@@ -72,7 +72,18 @@ router.get('/login', async(req, res, next) => {
     if (req.session.user) {
         res.redirect('/dashboard');
     } else {
-        res.render('login');
+
+        const currentLocale = req.query.lang || i18n.getLocale();
+
+
+        i18n.setLocale(req, currentLocale);
+
+        res.render('login', {
+            currentLocale: currentLocale,
+            title: res.__('authorization.title'),
+            registrationHeading: res.__('authorization.registration.heading'),
+            currentLocale: currentLocale,
+        });
     }
 });
 
