@@ -12,8 +12,13 @@
     <div class="card-container">
         <div class="profile-card">
             <img src="user-profile.jpg" alt="Profilbild" id="profileImage">
-            <h2 id="name">Max Mustermann</h2>
-            <p id="email">max@example.com</p>
+            <h2 id="name">
+                <%= user.vorname %>
+                    <%= user.nachname %>
+            </h2>
+            <p id="email">
+                <%= user.email %>
+            </p>
             <button id="editProfileButton">Edit Password</button>
             <button id="logoutButton">Logout</button>
             <a href="/contact" id="contactButton">Contakt</a>

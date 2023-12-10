@@ -47,7 +47,7 @@ router.post('/login', async(req, res, next) => {
         if (passwordMatch) {
             console.log(req.requesTime)
             req.session.user = user._id
-            res.status(200).json({ message: i18n.__('success.loginSuccess'), redirectTo: 'dashboard.html' });
+            res.status(200).json({ message: i18n.__('success.loginSuccess'), redirectTo: '/dashboard' });
         } else {
             res.status(401).json({ error: i18n.__('messages.incorrectPassword') });
         }
