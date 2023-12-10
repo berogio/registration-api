@@ -1,6 +1,7 @@
-import { fetchData } from "./service.js";
+import { fetchData, updateLanguage } from "./service.js";
 
 document.addEventListener("DOMContentLoaded", function() {
+    updateLanguage()
     const loginButton = document.querySelector('loginButton');
     const registrationForm = document.querySelector("form");
 

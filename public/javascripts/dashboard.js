@@ -1,5 +1,5 @@
-import { fetchData } from './service.js';
-
+import { fetchData, updateLanguage } from './service.js';
+updateLanguage()
 document.getElementById('editProfileButton').addEventListener('click', () => {
     window.location.href = 'edit';
 });

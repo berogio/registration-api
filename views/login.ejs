@@ -14,7 +14,15 @@
     <h2>
         <%= __("login.title") %>
     </h2>
+
     <form action="/login" method="POST" id="LogiForm">
+        <div class="center-container">
+            <a href="/contact" id="contactButton" class="smiley-button">
+                📧
+            </a>
+            <%- include('languageSelector') %>
+
+        </div>
         <label for="email"><%= __("login.login.email") %></label>
         <input type="email" id="LoginEmail" name="LoginEmail" required><br><br>
 

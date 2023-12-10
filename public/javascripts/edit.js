@@ -1,4 +1,4 @@
-import { fetchData } from './service.js';
+import { fetchData, updateLanguage } from './service.js';
 
 function changePassword() {
     const [currentPassword, newPassword, confirmPassword] = ['currentPassword', 'newPassword', 'confirmPassword']
@@ -24,6 +24,7 @@ function changePassword() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+    updateLanguage()
     const passwordChangeForm = document.getElementById("passwordChangeForm");
     passwordChangeForm.addEventListener("submit", function(event) {
         event.preventDefault();

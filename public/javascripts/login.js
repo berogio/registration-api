@@ -1,6 +1,7 @@
-import { fetchData } from './service.js';
+import { fetchData, updateLanguage } from './service.js';
 
 document.addEventListener("DOMContentLoaded", function() {
+    updateLanguage()
     const loginForm = document.getElementById("LogiForm");
     const errorMessageElement = document.getElementById("errorMessage");
     const forgotPasswordButton = document.getElementById("forgotPasswordButton");

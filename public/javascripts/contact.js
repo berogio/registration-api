@@ -1,6 +1,7 @@
-import { fetchData } from './service.js';
+import { fetchData, updateLanguage } from './service.js';
 
 document.addEventListener("DOMContentLoaded", () => {
+    updateLanguage()
     const form = document.getElementById("contactForm");
     const submitBtn = document.getElementById("submitBtn");
 
