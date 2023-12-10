@@ -8,7 +8,10 @@
     "notAuthenticated": "Benutzer nicht authentifiziert",
     "incorrectCurrentPassword": "Falsches aktuelles Passwort",
     "internalServerError": "Interner Serverfehler",
-    "emailSendingError": "Fehler beim Senden der E-Mail"
+    "emailSendingError": "Fehler beim Senden der E-Mail",
+    "vornameValidation": "Vorname sollte nur Buchstaben enthalten, mindestens 2 Zeichen lang und nicht mehr als 50 Zeichen haben",
+    "nachnameValidation": "Nachname sollte nur Buchstaben enthalten, mindestens 2 Zeichen lang und nicht mehr als 50 Zeichen haben",
+    "emailValidation": "Die E-Mail sollte nicht mehr als 100 Zeichen haben"
   },
   "success": {
     "newUserSaved": "Neuer Benutzer gespeichert",

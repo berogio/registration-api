@@ -29,8 +29,20 @@ router.post('/register', async(req, res) => {
             email,
             passwordHash,
         });
-        await newUser.save();
-        res.status(201).json({ message: i18n.__('success.newUserSaved'), redirectTo: 'login' });
+        try {
+            await newUser.save();
+            res.status(201).json({ message: i18n.__('success.newUserSaved'), redirectTo: 'login' });
+        } catch (mongooseError) {
+            if (mongooseError.errors && mongooseError.errors.vorname) {
+                return res.status(400).json({ error: mongooseError.errors.vorname.message });
+            } else if (mongooseError.errors && mongooseError.errors.nachname) {
+                return res.status(400).json({ error: mongooseError.errors.nachname.message });
+            } else if (mongooseError.errors && mongooseError.errors.email) {
+                return res.status(400).json({ error: mongooseError.errors.email.message });
+            } else {
+                return res.status(500).json({ error: i18n.__('messages.internalServerError') });
+            }
+        }
     } catch (error) {
         res.status(500).json({ error: i18n.__('messages.internalServerError') });
     }
@@ -60,7 +72,7 @@ router.get('/login', async(req, res, next) => {
     if (req.session.user) {
         res.redirect('/dashboard');
     } else {
-        res.redirect('/login');
+        res.render('login');
     }
 });
 

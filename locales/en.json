@@ -8,7 +8,10 @@
     "notAuthenticated": "User not authenticated",
     "incorrectCurrentPassword": "Incorrect current password",
     "internalServerError": "Internal Server Error",
-    "emailSendingError": "Error sending the E-Mail"
+    "emailSendingError": "Error sending the E-Mail",
+    "vornameValidation": "Vorname should only contain letters and be between 2 and 50 characters",
+    "nachnameValidation": "Nachname should only contain letters and be between 2 and 50 characters",
+    "emailValidation": "Email should be a valid email address and not exceed 100 characters"
   },
   "success": {
     "newUserSaved": "New User saved",

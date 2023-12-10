@@ -1,15 +1,27 @@
 const mongoose = require('../models/db.js');
 const validator = require('email-validator');
 const passwordSchema = require('./validators.js')
-
+const i18n = require('../i18n.js');
 const UserSchema = mongoose.Schema({
     vorname: {
         type: String,
-        required: true
+        required: true,
+        validate: {
+            validator: value => /^[a-zA-Z]+$/.test(value),
+            message: i18n.__('messages.vornameValidation'),
+        },
+        minlength: [2, i18n.__('messages.vornameValidation')],
+        maxlength: [50, i18n.__('messages.vornameValidation')],
     },
     nachname: {
         type: String,
-        required: true
+        required: true,
+        validate: {
+            validator: value => /^[a-zA-Z]+$/.test(value),
+            message: i18n.__('messages.nachnameValidation'),
+        },
+        minlength: [2, i18n.__('messages.nachnameValidation')],
+        maxlength: [50, i18n.__('messages.nachnameValidation')],
     },
     email: {
         type: String,
