@@ -1,7 +1,9 @@
+import { fetchData } from './service.js';
+
 document.addEventListener("DOMContentLoaded", function() {
     const loginForm = document.getElementById("LogiForm");
     const errorMessageElement = document.getElementById("errorMessage");
-
+    const forgotPasswordButton = document.getElementById("forgotPasswordButton");
     loginForm.addEventListener("submit", async function(event) {
         event.preventDefault();
 
@@ -9,25 +11,21 @@ document.addEventListener("DOMContentLoaded", function() {
         const { value: loginPassword } = document.getElementById('LoginPasswort');
 
         try {
-            const response = await fetch('http://localhost:3000/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ loginEmail, loginPassword })
-            });
-
-            const data = await response.json();
+            const data = await fetchData('login', 'POST', { loginEmail, loginPassword });
 
             if (data.message === 'OK') {
                 window.location.href = 'dashboard';
             } else {
-                errorMessageElement.textContent = data.error
+                showError(data.error);
             }
         } catch (error) {
             console.error('Error Sending Data:', error);
+            showError(error.message);
         }
     });
-});
 
-const forgotPasswordButton = document.getElementById("forgotPasswordButton");
+    function showError(errorMessage) {
+        errorMessageElement.textContent = errorMessage;
+    }
+
+});

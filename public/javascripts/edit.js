@@ -1,3 +1,5 @@
+import { fetchData } from './service.js';
+
 function changePassword() {
     const [currentPassword, newPassword, confirmPassword] = ['currentPassword', 'newPassword', 'confirmPassword']
     .map(id => document.getElementById(id).value);
@@ -8,14 +10,8 @@ function changePassword() {
     }
 
     const data = { currentPassword, newPassword };
-    const zielUrl = 'http://localhost:3000/edit';
 
-    fetch(zielUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        })
-        .then(response => response.ok ? response.json() : Promise.reject('Password change failed'))
+    fetchData('edit', 'POST', data)
         .then(() => {
             alert('Password changed successfully');
             window.location.href = 'login';
@@ -26,3 +22,11 @@ function changePassword() {
             window.location.href = 'login';
         });
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    const passwordChangeForm = document.getElementById("passwordChangeForm");
+    passwordChangeForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+        changePassword();
+    });
+});

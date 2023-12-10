@@ -1,7 +1,10 @@
+import { fetchData } from "./service.js";
+
 document.addEventListener("DOMContentLoaded", function() {
     const loginButton = document.querySelector('loginButton');
     const registrationForm = document.querySelector("form");
-    registrationForm.addEventListener("submit", function(event) {
+
+    registrationForm.addEventListener("submit", async function(event) {
         event.preventDefault();
 
         const vorname = document.getElementById("vorname").value;
@@ -16,46 +19,24 @@ document.addEventListener("DOMContentLoaded", function() {
             password: password
         };
 
-        const zielUrl = 'http://localhost:3000/register';
-        fetch(zielUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => {
-                if (response.status === 201) {
-                    return response.json();
-                } else if (response.status === 400) {
-                    return response.json().then(data => {
-                        showError(data.error);
-                        throw new Error(data.error);
-                    });
-                } else {
-                    console.error('Error during registration', response.statusText);
-                    throw new Error('Error during registration');
-                }
-            })
-            .then(data => {
-                const redirectTo = data.redirectTo;
-                if (redirectTo) {
-                    window.location.href = redirectTo;
-                }
-            })
-            .catch(error => {
-                console.error('Error Sending Data', error);
-            });
+        try {
+            const data = await fetchData('register', 'POST', formData);
+
+            const redirectTo = data.redirectTo;
+            if (redirectTo) {
+                window.location.href = redirectTo;
+            }
+        } catch (error) {
+            showError(error.message);
+        }
 
         function showError(errorMessage) {
             const errorElement = document.getElementById('error-message');
             errorElement.innerText = errorMessage;
             errorElement.style.color = 'red';
         }
-
     });
 });
-
 loginButton.addEventListener('click', function() {
     window.location.href = 'login';
-})
+});

@@ -1,17 +1,21 @@
-document.getElementById('editProfileButton').addEventListener('click', () => window.location.href = 'edit');
+import { fetchData } from './service.js';
+
+document.getElementById('editProfileButton').addEventListener('click', () => {
+    window.location.href = 'edit';
+});
+
 document.getElementById('logoutButton').addEventListener('click', async() => {
     try {
-        const response = await fetch('/signout', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({})
-        });
+        const response = await fetchData('signout', 'POST', {});
 
-        if (!response.ok) throw new Error('Logout failed');
-
-        console.log('Logout successful');
-        window.location.href = 'login';
+        if (response.message === 'Logout successful') {
+            window.location.href = 'login';
+        } else {
+            console.error('Unexpected response:', response);
+            alert('Logout failed');
+        }
     } catch (error) {
         console.error('Logout error:', error.message);
+        alert('Logout failed');
     }
 });

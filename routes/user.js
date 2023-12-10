@@ -98,9 +98,10 @@ router.post('/signout', async(req, res, next) => {
             console.error('Error destroying session:', err);
             return res.status(500).json({ error: i18n.__('messages.internalServerError') });
         }
-        res.redirect('/login');
+        res.status(200).json({ message: 'Logout successful' });
     });
 });
+
 
 router.get('/edit', guard(), async(req, res, next) => {
     res.render('edit');
