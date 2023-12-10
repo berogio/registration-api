@@ -60,7 +60,7 @@ router.get('/login', async(req, res, next) => {
     if (req.session.user) {
         res.redirect('/dashboard');
     } else {
-        res.redirect('/login');
+        res.render('login');
     }
 });
 
