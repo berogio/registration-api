@@ -123,8 +123,6 @@ router.post('/signout', async(req, res, next) => {
 
 router.get('/edit', guard(), async(req, res, next) => {
     const currentLocale = req.query.lang || i18n.getLocale();
-
-
     i18n.setLocale(req, currentLocale);
 
     res.render('edit', {

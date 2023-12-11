@@ -11,7 +11,6 @@ const passForgot = require('./routes/passForgot.js')
 const dashboard = require('./routes/dashboard.js')
 const { blockHTMLRequests, requstTime } = require('./middleware/AllMiddleware.js');
 const session = require('express-session')
-const ejs = require('ejs');
 const i18n = require('./i18n.js')
 require('dotenv').config();
 

@@ -9,9 +9,7 @@ router.get('/dashboard', guard(), async(req, res, next) => {
         const userId = req.session.user;
         const user = await User.findById(userId);
         const currentLocale = req.query.lang || i18n.getLocale();
-
         i18n.setLocale(req, currentLocale);
-
         if (user) {
             res.render('dashboard', {
                 user,

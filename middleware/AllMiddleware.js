@@ -12,7 +12,6 @@ let requstTime = function(req, res, next) {
     next()
 }
 
-//Block Dashboard for noth authorised User
 let guard = function() {
     return function middler(req, res, next) {
         if (req.session.user) {

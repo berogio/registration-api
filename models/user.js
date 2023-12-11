@@ -2,6 +2,7 @@ const mongoose = require('../models/db.js');
 const validator = require('email-validator');
 const passwordSchema = require('./validators.js')
 const i18n = require('../i18n.js');
+
 const UserSchema = mongoose.Schema({
     vorname: {
         type: String,

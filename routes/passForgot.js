@@ -15,10 +15,10 @@ router.post('/forgot-password', async(req, res) => {
 
         //comming son
 
+
+
         const resetToken = generateResetToken();
         sendResetTokenByEmail(user.email, resetToken);
-
-
         return res.status(200).json({ message: i18n.__('success.resetTokenSent') });
     } catch (error) {
         console.error('Error sending reset token:', error);
