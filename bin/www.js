@@ -14,7 +14,7 @@ var http = require('http');
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
-console.log(port)
+
 
 /**
  * Create HTTP server.
@@ -36,7 +36,6 @@ server.on('listening', onListening);
 
 function normalizePort(val) {
     var port = parseInt(val, 10);
-    console.log(port)
     if (isNaN(port)) {
         // named pipe
         return val;
