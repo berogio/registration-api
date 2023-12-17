@@ -5,9 +5,13 @@
 
    ```bash
    npm install
-Start the application:
-npm start
+   
+## START
+1. START app
 
+   ```bash
+   npm start
+   
 
 # Registration and Login System
 
