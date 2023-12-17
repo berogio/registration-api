@@ -11,8 +11,6 @@
 
    ```bash
    npm start
-   
-
 # Registration and Login System
 
 Welcome to the Registration and Login System project! This web application allows users to register, log in, change their password, and includes a contact form.
