@@ -1,11 +1,11 @@
-const blockHTMLRequests = (req, res, next) => {
-    const requestPath = req.path;
-    if (requestPath.endsWith('.html')) {
-        res.status(403).send('Access to HTML files is not allowed');
-    } else {
-        next();
-    }
-};
+// const blockHTMLRequests = (req, res, next) => {
+//     const requestPath = req.path;
+//     if (requestPath.endsWith('.html')) {
+//         res.status(403).send('Access to HTML files is not allowed');
+//     } else {
+//         next();
+//     }
+// };
 
 let requstTime = function(req, res, next) {
     req.requesTime = Date.now()
@@ -22,4 +22,4 @@ let guard = function() {
     };
 };
 
-module.exports = { blockHTMLRequests, requstTime, guard };
+module.exports = { requstTime, guard };

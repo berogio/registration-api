@@ -57,7 +57,6 @@ router.post('/login', async(req, res, next) => {
         }
         const passwordMatch = await bcrypt.compare(loginPassword, user.passwordHash);
         if (passwordMatch) {
-            console.log(req.requesTime)
             req.session.user = user._id
             res.status(200).json({ message: i18n.__('success.loginSuccess'), redirectTo: '/dashboard' });
         } else {
