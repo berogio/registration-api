@@ -23,16 +23,17 @@ app.use(session({
 
 }))
 
-
-app.use(blockHTMLRequests);
-app.use(requstTime)
 app.use(cors())
+
+app.use(requstTime);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(i18n.init);
+app.use(blockHTMLRequests);
+
 
 app.set('view engine', 'ejs');
 
