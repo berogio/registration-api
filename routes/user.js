@@ -58,7 +58,7 @@ router.post('/login', async(req, res, next) => {
         const passwordMatch = await bcrypt.compare(loginPassword, user.passwordHash);
         if (passwordMatch) {
             req.session.user = user._id
-            res.status(200).json({ message: i18n.__('success.loginSuccess'), redirectTo: '/dashboard' });
+            res.status(200).json({ message: i18n.__('success.loginSuccess'), redirectTo: 'dashboard' });
         } else {
             res.status(401).json({ error: i18n.__('messages.incorrectPassword') });
         }

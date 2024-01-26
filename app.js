@@ -24,7 +24,7 @@ app.use(session({
 }))
 
 
-
+app.use(blockHTMLRequests);
 app.use(requstTime)
 app.use(cors())
 app.use(logger('dev'));
