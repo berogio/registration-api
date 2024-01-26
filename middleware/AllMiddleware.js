@@ -15,6 +15,7 @@ let requstTime = function(req, res, next) {
 let guard = function() {
     return function middler(req, res, next) {
         if (req.session.user) {
+            console.log('test111')
             next();
         } else {
             res.status(401).redirect('/login');

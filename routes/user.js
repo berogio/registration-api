@@ -53,17 +53,22 @@ router.post('/login', async(req, res, next) => {
         const { loginPassword, loginEmail } = req.body;
         const user = await User.findOne({ email: loginEmail });
         if (!user) {
+            console.log('test3')
             return res.status(404).json({ error: i18n.__('messages.userNotFound') });
+
         }
         const passwordMatch = await bcrypt.compare(loginPassword, user.passwordHash);
         if (passwordMatch) {
             req.session.user = user._id
+            console.log('test1')
             res.status(200).json({ message: i18n.__('success.loginSuccess'), redirectTo: 'dashboard' });
+            console.log('test2')
         } else {
             res.status(401).json({ error: i18n.__('messages.incorrectPassword') });
         }
     } catch (error) {
         res.status(500).json({ error: i18n.__('messages.internalServerError') });
+        console.log('test4')
     }
 });
 
