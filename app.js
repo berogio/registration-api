@@ -10,7 +10,8 @@ const contact = require('./routes/contact.js');
 const passForgot = require('./routes/passForgot.js')
 const dashboard = require('./routes/dashboard.js')
 const { blockHTMLRequests, requstTime } = require('./middleware/AllMiddleware.js');
-const session = require('express-session')
+
+const session = require('cookie-session')
 const i18n = require('./i18n.js')
 require('dotenv').config();
 
