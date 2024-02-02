@@ -19,9 +19,9 @@ const app = express();
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     //es
-    cookie: {}
+    cookie: { httpOnly: true }
 }))
 
 app.use(cors())
