@@ -15,7 +15,7 @@ const i18n = require('./i18n.js')
 require('dotenv').config();
 
 const app = express();
-
+app.use(cors())
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
@@ -25,7 +25,7 @@ app.use(session({
     sameSite: 'none'
 }))
 
-app.use(cors())
+
 
 app.use(requstTime);
 app.use(logger('dev'));
