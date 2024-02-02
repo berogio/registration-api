@@ -10,6 +10,7 @@ const i18n = require('../i18n.js');
 router.post('/register', async(req, res) => {
     const saltRounds = 10;
 
+
     try {
         const { vorname, nachname, email, password } = req.body;
         if (!validator.validate(email)) {
