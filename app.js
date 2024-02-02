@@ -18,7 +18,7 @@ require('dotenv').config();
 const mongoPassword = process.env.MONGODB_PASSWORD;
 const allowedOrigins = [
     'https://registration-api-production-1e5d.up.railway.app',
-    // Weitere erlaubte Ursprünge hinzufügen, falls erforderlich
+    'http://localhost:3000'
 ];
 const corsOptions = {
     origin: function(origin, callback) {
@@ -28,9 +28,8 @@ const corsOptions = {
             callback(new Error('Not allowed by CORS'));
         }
     },
-    credentials: true, // Wenn Cookies oder Sessions übermittelt werden
+    credentials: true,
 };
-
 
 const store = new MongoDBStore({
     uri: `mongodb+srv://gberi2012:${mongoPassword}@cluster0.a2bfzeu.mongodb.net/?retryWrites=true&w=majority`,
@@ -42,14 +41,14 @@ const sessionMiddleware = session({
     secret: 'IhrGeheimesSchlüsselwort',
     resave: false,
     saveUninitialized: true,
-    cookie: { httpOnly: true, secure: false, }
+    cookie: { httpOnly: true, secure: true, }
 });
 
 const app = express();
 
-app.use(cors(corsOptions));
-app.use(sessionMiddleware);
 
+app.use(sessionMiddleware);
+app.use(cors(corsOptions));
 app.use(requstTime);
 
 app.use(logger('dev'));
