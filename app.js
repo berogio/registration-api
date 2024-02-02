@@ -11,17 +11,30 @@ const passForgot = require('./routes/passForgot.js')
 const dashboard = require('./routes/dashboard.js')
 const { blockHTMLRequests, requstTime } = require('./middleware/AllMiddleware.js');
 const session = require('express-session')
+const MongoDBStore = require('connect-mongodb-session')(session);
 const i18n = require('./i18n.js')
 require('dotenv').config();
 
 const app = express();
 
+const store = new MongoDBStore({
+    uri: `mongodb+srv://gberi2012:1OHgbKre249Xc3qf@cluster0.a2bfzeu.mongodb.net/?retryWrites=true&w=majority`,
+    collection: 'sessions'
+});
+
+const sessionMiddleware = session({
+    store: store,
+    secret: 'IhrGeheimesSchlüsselwort',
+    resave: false,
+    saveUninitialized: true
+});
+app.use(sessionMiddleware);
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: false,
     //es
-    cookie: { httpOnly: true, secure: true }
+    cookie: { httpOnly: true, secure: true, }
 }))
 
 app.use(cors())
