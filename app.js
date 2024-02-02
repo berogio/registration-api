@@ -21,7 +21,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     //es
-    cookie: { httpOnly: true, secure: true }
+    cookie: { httpOnly: true, secure: false }
 }))
 
 app.use(cors())

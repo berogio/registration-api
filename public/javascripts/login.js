@@ -15,18 +15,19 @@ document.addEventListener("DOMContentLoaded", function() {
             const data = await fetchData('login', 'POST', { loginEmail, loginPassword });
 
             if (data.message === 'OK') {
+                console.log('aqvar3')
                 window.location.href = 'dashboard';
             } else {
                 showError(data.error);
             }
         } catch (error) {
-            console.error('Error Sending Data:', error);
+            console.error('Error Sending Data: aqvar6', error);
             showError(error.message);
         }
     });
 
     function showError(errorMessage) {
-        errorMessageElement.textContent = errorMessage;
+        errorMessageElement.textContent = errorMessage + 'aqvar2';
     }
 
 });
