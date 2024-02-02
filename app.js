@@ -16,13 +16,7 @@ require('dotenv').config();
 
 const app = express();
 
-app.use(session({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: true,
-    //es
-    cookie: {}
-}))
+
 var sess = {
     secret: 'keyboard cat',
     cookie: {}
