@@ -3,22 +3,22 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const cors = require('cors')
+const cors = require('cors');
 const users = require('./routes/user.js');
 const index = require('./routes/index.js');
 const contact = require('./routes/contact.js');
-const passForgot = require('./routes/passForgot.js')
-const dashboard = require('./routes/dashboard.js')
+const passForgot = require('./routes/passForgot.js');
+const dashboard = require('./routes/dashboard.js');
 const { blockHTMLRequests, requstTime } = require('./middleware/AllMiddleware.js');
-const session = require('express-session')
+const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
-const i18n = require('./i18n.js')
+const i18n = require('./i18n.js');
 require('dotenv').config();
 
-const app = express();
+const mongoPassword = process.env.MONGODB_PASSWORD;
 
 const store = new MongoDBStore({
-    uri: `mongodb+srv://gberi2012:1OHgbKre249Xc3qf@cluster0.a2bfzeu.mongodb.net/?retryWrites=true&w=majority`,
+    uri: `mongodb+srv://gberi2012:${mongoPassword}@cluster0.a2bfzeu.mongodb.net/?retryWrites=true&w=majority`,
     collection: 'sessions'
 });
 
@@ -26,30 +26,23 @@ const sessionMiddleware = session({
     store: store,
     secret: 'IhrGeheimesSchlüsselwort',
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: { httpOnly: true, secure: true }
 });
+
+const app = express();
+
 app.use(sessionMiddleware);
-app.use(session({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: false,
-    //es
-    cookie: { httpOnly: true, secure: true, }
-}))
-
-app.use(cors())
-
+app.use(cors());
 app.use(requstTime);
 
 app.use(logger('dev'));
 app.use(express.json());
-//es
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(i18n.init);
 app.use(blockHTMLRequests);
-
 
 app.set('view engine', 'ejs');
 
