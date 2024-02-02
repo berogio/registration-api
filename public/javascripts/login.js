@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const data = await fetchData('login', 'POST', { loginEmail, loginPassword });
 
             if (data.message === 'OK') {
-                window.location.href = 'dashboard';
+                window.location.href = '/dashboard';
             } else {
                 showError(data.error);
             }
