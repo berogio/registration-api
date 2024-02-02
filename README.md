@@ -22,7 +22,7 @@ Welcome to the Registration and Login System project! This web application allow
 - Password Change: Change the password for an authenticated user.
 - Contact Form: Submit inquiries or feedback through a contact form.
 - Session Management: Manage user sessions for authentication.
-- JWT (JSON Web Tokens): Utilize JWT for secure authentication.
+- using external databases (MongoDB) as session storage.
 - Nodemailer: Send confirmation emails for successful registration.
 - Responsive Design: Ensure optimal viewing on various devices.
 -  **Internationalization (i18n):** Localize and translate messages for different languages using i18n.
