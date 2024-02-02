@@ -42,7 +42,7 @@ const sessionMiddleware = session({
     secret: 'IhrGeheimesSchlüsselwort',
     resave: false,
     saveUninitialized: true,
-    cookie: { httpOnly: true, secure: true, }
+    cookie: { httpOnly: true, secure: false, }
 });
 
 const app = express();
