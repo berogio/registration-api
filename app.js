@@ -15,15 +15,21 @@ const i18n = require('./i18n.js')
 require('dotenv').config();
 
 const app = express();
-app.use(cors())
+app.use(cors({
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // Erlaubt Cookies und andere Anmeldeinformationen über die CORS-Anforderung weiterzugeben
+}))
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
-    //es
-    cookie: { httpOnly: false, secure: true },
-    sameSite: 'none'
-}))
+    cookie: {
+        httpOnly: false,
+        secure: process.env.NODE_ENV === 'production', // Nur in der Produktion auf true setzen
+        sameSite: 'none', // Nur in der Produktion auf 'none' setzen
+    },
+}));
+
 
 
 
