@@ -31,7 +31,7 @@ router.post('/register', async(req, res) => {
         });
         try {
             await newUser.save();
-            res.status(201).json({ message: i18n.__('success.newUserSaved'), redirectTo: '/login' });
+            res.status(201).json({ message: i18n.__('success.newUserSaved'), redirectTo: 'login' });
         } catch (mongooseError) {
             if (mongooseError.errors && mongooseError.errors.vorname) {
                 return res.status(400).json({ error: mongooseError.errors.vorname.message });

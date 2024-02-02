@@ -16,17 +16,14 @@ require('dotenv').config();
 
 const app = express();
 
-
-var sess = {
+app.use(session({
     secret: 'keyboard cat',
-    cookie: {}
-}
-if (app.get('env') === 'production') {
-    app.set('trust proxy', 1) // trust first proxy
-    sess.cookie.secure = true // serve secure cookies
-}
+    resave: false,
+    saveUninitialized: true,
+    //es
+    cookie: { httpOnly: true, secure: true }
+}))
 
-app.use(session(sess))
 app.use(cors())
 
 app.use(requstTime);
