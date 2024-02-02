@@ -10,7 +10,7 @@ const contact = require('./routes/contact.js');
 const passForgot = require('./routes/passForgot.js');
 const dashboard = require('./routes/dashboard.js');
 
-const { blockHTMLRequests, requstTime, guard } = require('./middleware/AllMiddleware.js');
+// const { blockHTMLRequests, requstTime, guard } = require('./middleware/AllMiddleware.js');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const i18n = require('./i18n.js');
@@ -50,7 +50,7 @@ const app = express();
 
 app.use(sessionMiddleware);
 app.use(cors(corsOptions));
-app.use(requstTime);
+// app.use(requstTime);
 
 app.use(logger('dev'));
 app.use(express.json());
