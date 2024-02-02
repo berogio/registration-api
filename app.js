@@ -21,7 +21,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     //es
-    cookie: { httpOnly: true, secure: true, maxAge: Date.now() + (30 * 86400 * 1000) }
+    cookie: { httpOnly: true, secure: true }
 }))
 
 app.use(cors())
