@@ -9,7 +9,8 @@ const index = require('./routes/index.js');
 const contact = require('./routes/contact.js');
 const passForgot = require('./routes/passForgot.js');
 const dashboard = require('./routes/dashboard.js');
-const { blockHTMLRequests, requstTime } = require('./middleware/AllMiddleware.js');
+
+const { blockHTMLRequests, requstTime, guard } = require('./middleware/AllMiddleware.js');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const i18n = require('./i18n.js');
@@ -57,7 +58,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(i18n.init);
-app.use(blockHTMLRequests);
+
 
 app.set('view engine', 'ejs');
 
