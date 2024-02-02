@@ -82,8 +82,8 @@
       "logIn ": " authorization.registration.logIn "
     }
   },
-  "Registration Sign Up": "Anmeldung Registrieren",
-  "Registration Log In": "Anmeldung Einloggen",
+  "Registration Sign Up": "Registrieren",
+  "Registration Log In": "Einloggen",
   "document": {
     "title": "document.title",
     "login": {
@@ -118,5 +118,7 @@
     "form": {
       "submitButton ": " contactForm.form.submitButton "
     }
-  }
+  },
+  " Sign Up": " Sign Up",
+  " Log In": " Log In"
 }

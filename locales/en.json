@@ -1,122 +1,124 @@
 {
-	"messages": {
-		"invalidEmail": "Invalid email address",
-		"passwordRequirements": "Password must be at least 5 characters long and contain at least one uppercase letter.",
-		"emailExists": "Email already exists",
-		"userNotFound": "User not found",
-		"incorrectPassword": "Incorrect password",
-		"notAuthenticated": "User not authenticated",
-		"incorrectCurrentPassword": "Incorrect current password",
-		"internalServerError": "Internal Server Error",
-		"emailSendingError": "Error sending the E-Mail",
-		"vornameValidation": "Vorname should only contain letters and be between 2 and 50 characters",
-		"nachnameValidation": "Nachname should only contain letters and be between 2 and 50 characters",
-		"emailValidation": "Email should be a valid email address and not exceed 100 characters"
-	},
-	"success": {
-		"newUserSaved": "New User saved",
-		"loginSuccess": "OK",
-		"passwordChanged": "Password changed successfully",
-		"emailSentSuccessfully": "E-Mail sent successfully"
-	},
-	"authorization": {
-		"title": "Authorization",
-		"registration": {
-			"heading": "Registration",
-			"firstName": "First Name:",
-			"lastName": "Last Name:",
-			"email": "E-Mail:",
-			"password": "Password:",
-			"signUp": "Sign Up",
-			"logIn": "Log In",
-			"contact": "Contact",
-			"errorMessage": ""
-		}
-	},
-	"login": {
-		"title": "Login",
-		"login": {
-			"heading": "Login",
-			"email": "E-Mail:",
-			"password": "Password:",
-			"logIn": "Log In",
-			"forgotPassword": "Forgot Password",
-			"errorMessage": ""
-		}
-	},
-	"passwordChange": {
-		"title": "Password Change",
-		"editPassword": {
-			"heading": "Edit Password",
-			"currentPassword": "Current Password:",
-			"newPassword": "New Password:",
-			"confirmNewPassword": "Confirm New Password:",
-			"changePassword": "Change Password"
-		}
-	},
-	"profileOverview": {
-		"title": "Profile Overview",
-		"card": {
-			"profileImageAlt": "Profile Picture",
-			"editProfileButton": "Edit Password",
-			"logoutButton": "Logout",
-			"contactButton": "Contact"
-		}
-	},
-	"contactForm": {
-		"title": "Contact Form",
-		"form": {
-			"heading": "Contact Form",
-			"nameLabel": "Name:",
-			"namePlaceholder": "Your Name",
-			"emailLabel": "E-Mail:",
-			"emailPlaceholder": "Your Email",
-			"messageLabel": "Message:",
-			"messagePlaceholder": "Type your message here",
-			"submitButton": "Send"
-		}
-	},
-	" authorization": {
-		"registration": {
-			"signUp ": " authorization.registration.signUp ",
-			"logIn ": " authorization.registration.logIn "
-		}
-	},
-	"Registration Sign Up": "Registration Sign Up",
-	"Registration Log In": "Registration Log In",
-	"document": {
-		"title": "document.title",
-		"login": {
-			"heading": "document.login.heading",
-			"emailLabel": "document.login.emailLabel",
-			"passwordLabel": "document.login.passwordLabel"
-		}
-	},
-	" document": {
-		"login": {
-			"logInButton ": " document.login.logInButton ",
-			"forgotPasswordButton ": " document.login.forgotPasswordButton "
-		}
-	},
-	" login": {
-		"login": {
-			"logIn ": " login.login.logIn ",
-			"forgotPassword ": " login.login.forgotPassword "
-		}
-	},
-	" passwordChange": {
-		"editPassword": {
-			"changePassword ": " passwordChange.editPassword.changePassword "
-		}
-	},
-	" profileOverview": {
-		"card": {
-			"profileImageAlt ": " profileOverview.card.profileImageAlt "
-		}
-	},
-	" contactForm": {
-		"form": {
-			"submitButton ": " contactForm.form.submitButton "
-		}
-	}
+  "messages": {
+    "invalidEmail": "Invalid email address",
+    "passwordRequirements": "Password must be at least 5 characters long and contain at least one uppercase letter.",
+    "emailExists": "Email already exists",
+    "userNotFound": "User not found",
+    "incorrectPassword": "Incorrect password",
+    "notAuthenticated": "User not authenticated",
+    "incorrectCurrentPassword": "Incorrect current password",
+    "internalServerError": "Internal Server Error",
+    "emailSendingError": "Error sending the E-Mail",
+    "vornameValidation": "Vorname should only contain letters and be between 2 and 50 characters",
+    "nachnameValidation": "Nachname should only contain letters and be between 2 and 50 characters",
+    "emailValidation": "Email should be a valid email address and not exceed 100 characters"
+  },
+  "success": {
+    "newUserSaved": "New User saved",
+    "loginSuccess": "OK",
+    "passwordChanged": "Password changed successfully",
+    "emailSentSuccessfully": "E-Mail sent successfully"
+  },
+  "authorization": {
+    "title": "Authorization",
+    "registration": {
+      "heading": "Registration",
+      "firstName": "First Name:",
+      "lastName": "Last Name:",
+      "email": "E-Mail:",
+      "password": "Password:",
+      "signUp": "Sign Up",
+      "logIn": "Log In",
+      "contact": "Contact",
+      "errorMessage": ""
+    }
+  },
+  "login": {
+    "title": "Login",
+    "login": {
+      "heading": "Login",
+      "email": "E-Mail:",
+      "password": "Password:",
+      "logIn": "Log In",
+      "forgotPassword": "Forgot Password",
+      "errorMessage": ""
+    }
+  },
+  "passwordChange": {
+    "title": "Password Change",
+    "editPassword": {
+      "heading": "Edit Password",
+      "currentPassword": "Current Password:",
+      "newPassword": "New Password:",
+      "confirmNewPassword": "Confirm New Password:",
+      "changePassword": "Change Password"
+    }
+  },
+  "profileOverview": {
+    "title": "Profile Overview",
+    "card": {
+      "profileImageAlt": "Profile Picture",
+      "editProfileButton": "Edit Password",
+      "logoutButton": "Logout",
+      "contactButton": "Contact"
+    }
+  },
+  "contactForm": {
+    "title": "Contact Form",
+    "form": {
+      "heading": "Contact Form",
+      "nameLabel": "Name:",
+      "namePlaceholder": "Your Name",
+      "emailLabel": "E-Mail:",
+      "emailPlaceholder": "Your Email",
+      "messageLabel": "Message:",
+      "messagePlaceholder": "Type your message here",
+      "submitButton": "Send"
+    }
+  },
+  " authorization": {
+    "registration": {
+      "signUp ": " authorization.registration.signUp ",
+      "logIn ": " authorization.registration.logIn "
+    }
+  },
+  "Registration Sign Up": "Sign Up",
+  "Registration Log In": "Log In",
+  "document": {
+    "title": "document.title",
+    "login": {
+      "heading": "document.login.heading",
+      "emailLabel": "document.login.emailLabel",
+      "passwordLabel": "document.login.passwordLabel"
+    }
+  },
+  " document": {
+    "login": {
+      "logInButton ": " document.login.logInButton ",
+      "forgotPasswordButton ": " document.login.forgotPasswordButton "
+    }
+  },
+  " login": {
+    "login": {
+      "logIn ": " login.login.logIn ",
+      "forgotPassword ": " login.login.forgotPassword "
+    }
+  },
+  " passwordChange": {
+    "editPassword": {
+      "changePassword ": " passwordChange.editPassword.changePassword "
+    }
+  },
+  " profileOverview": {
+    "card": {
+      "profileImageAlt ": " profileOverview.card.profileImageAlt "
+    }
+  },
+  " contactForm": {
+    "form": {
+      "submitButton ": " contactForm.form.submitButton "
+    }
+  },
+  " Sign Up": " Sign Up",
+  " Log In": " Log In"
 }
