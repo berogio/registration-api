@@ -10,8 +10,7 @@ const contact = require('./routes/contact.js');
 const passForgot = require('./routes/passForgot.js')
 const dashboard = require('./routes/dashboard.js')
 const { blockHTMLRequests, requstTime } = require('./middleware/AllMiddleware.js');
-
-const session = require('cookie-session')
+const session = require('express-session')
 const i18n = require('./i18n.js')
 require('dotenv').config();
 
@@ -22,7 +21,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     //es
-    cookie: { httpOnly: true, }
+    cookie: { httpOnly: true, secure: true }
 }))
 
 app.use(cors())
