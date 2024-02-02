@@ -16,13 +16,13 @@ require('dotenv').config();
 
 const app = express();
 
-app.use(session({
-    secret: 'keyboard cat',
-    resave: false,
-    saveUninitialized: false,
-    //es
-    cookie: { httpOnly: true, secure: false }
-}))
+// app.use(session({
+//     secret: 'keyboard cat',
+//     resave: false,
+//     saveUninitialized: false,
+//     //es
+//     cookie: { httpOnly: true, secure: false }
+// }))
 
 app.use(cors())
 
