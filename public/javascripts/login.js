@@ -20,13 +20,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 showError(data.error);
             }
         } catch (error) {
-            console.error('Error Sending Data: aqvar6', error);
+            console.error('Error Sending Data:', error);
             showError(error.message);
         }
     });
 
     function showError(errorMessage) {
-        errorMessageElement.textContent = errorMessage + 'aqvar2';
+        errorMessageElement.textContent = errorMessage;
     }
 
 });
