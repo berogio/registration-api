@@ -32,7 +32,7 @@ const sessionMiddleware = session({
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
 app.use(sessionMiddleware);
 
 app.use(requstTime);
