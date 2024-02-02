@@ -3,22 +3,12 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const validator = require('email-validator');
 const passwordSchema = require('../models/validators.js')
-
+const { guard } = require('../middleware/AllMiddleware');
 const User = require('../models/user.js');
 const i18n = require('../i18n.js');
-let guard = function() {
-    return function middler(req, res, next) {
-        if (req.session.user) {
-            console.log('test111')
-            next();
-        } else {
-            res.status(401).redirect('/login');
-        }
-    };
-};
+
 router.post('/register', async(req, res) => {
     const saltRounds = 10;
-
 
     try {
         const { vorname, nachname, email, password } = req.body;

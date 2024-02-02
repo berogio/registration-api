@@ -10,7 +10,7 @@ const contact = require('./routes/contact.js');
 const passForgot = require('./routes/passForgot.js');
 const dashboard = require('./routes/dashboard.js');
 
-// const { blockHTMLRequests, requstTime, guard } = require('./middleware/AllMiddleware.js');
+const { blockHTMLRequests, requstTime, guard } = require('./middleware/AllMiddleware.js');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 const i18n = require('./i18n.js');
@@ -42,7 +42,7 @@ const sessionMiddleware = session({
     secret: 'IhrGeheimesSchlüsselwort',
     resave: false,
     saveUninitialized: true,
-    cookie: { httpOnly: true, secure: false, }
+    cookie: { httpOnly: true, secure: true, }
 });
 
 const app = express();
@@ -50,7 +50,7 @@ const app = express();
 
 app.use(sessionMiddleware);
 app.use(cors(corsOptions));
-// app.use(requstTime);
+app.use(requstTime);
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -58,7 +58,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(i18n.init);
-
+app.use(blockHTMLRequests);
 
 app.set('view engine', 'ejs');
 
